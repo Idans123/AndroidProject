@@ -10,6 +10,57 @@
         android:background="@null"
         android:scaleType="fitXY"
         android:src="@drawable/background"/>
-   
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Balloons World"
+       android:textSize="40sp"
+       android:textStyle="bold"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="20dp"
+       android:id="@+id/welcomeTV"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/usernameRL"
+        android:layout_below="@+id/welcomeTV"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerTV"
+            android:text="Player: "
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerET"
+            android:layout_toEndOf="@+id/playerTV"
+            android:layout_marginStart="10dp"
+            android:hint="Your name"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonsRL"
+        android:layout_below="@+id/usernameRL"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/startBtn"
+            android:text="Start"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/exitBtn"
+            android:layout_below="@+id/startBtn"
+            android:text="Exit"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>
