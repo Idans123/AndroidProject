@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("Yes", new AlertDialogListener())
                         .setNegativeButton("No",new AlertDialogListener())
                         .show();
+            }
+        });
+        Button startBtn = findViewById(R.id.startBtn);
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                startActivity(intent);
             }
         });
     }
