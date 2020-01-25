@@ -1,7 +1,11 @@
 package com.example.balloonsworld.gameobjects;
 
+import android.graphics.Bitmap;
+
 public class GoldCoin extends GameConsumable {
-    public GoldCoin(int minBallonX, int maxBallonX, int speed, int type, int value) {
-        super(minBallonX, maxBallonX, speed, type, value);
+    private Bitmap bitmapGoldCoin;
+    public GoldCoin(int minBallonX, int maxBallonX, Bitmap bitmapGoldCoin) {
+        super(minBallonX, maxBallonX, 20, ObjectType.BITMAP, 40);
+        this.bitmapGoldCoin=bitmapGoldCoin;
     }
 }

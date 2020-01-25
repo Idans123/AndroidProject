@@ -1,7 +1,13 @@
 package com.example.balloonsworld.gameobjects;
 
+import android.graphics.Color;
+import android.graphics.Paint;
+
 public class Shield extends GameConsumable {
-    public Shield(int minBallonX, int maxBallonX, int speed, int type, int value) {
-        super(minBallonX, maxBallonX, speed, type, value);
+    public Paint paint = new Paint();
+    public Shield(int minBallonX, int maxBallonX) {
+        super(minBallonX, maxBallonX, 20, ObjectType.CANVAS, -1);
+        paint.setColor(Color.BLUE);
+        paint.setAntiAlias(false);
     }
 }

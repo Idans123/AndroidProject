@@ -4,9 +4,9 @@ public class GameObstacle implements IGameObjects {
     private int obstacleX, obstacleY=0;
     private int minBallonX, maxBallonX;
     private int speed;
-    private int type;
+    private ObjectType type;
 
-    public GameObstacle(int minBallonX, int maxBallonX, int speed, int type) {
+    public GameObstacle(int minBallonX, int maxBallonX, int speed, ObjectType type) {
         this.obstacleX = (int)Math.floor(Math.random()*(maxBallonX-minBallonX))+minBallonX;
         this.obstacleY = 0;
         this.minBallonX = minBallonX;
@@ -31,7 +31,7 @@ public class GameObstacle implements IGameObjects {
     }
 
     @Override
-    public int getType() {
+    public ObjectType getType() {
         return this.type;
     }
 }

@@ -4,5 +4,5 @@ public interface IGameObjects {
     int getObjectY();
     int getObjectX();
     void update();
-    int getType();
+    ObjectType getType();
 }

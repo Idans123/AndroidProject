@@ -1,6 +1,5 @@
 package com.example.balloonsworld;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,10 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -47,21 +44,20 @@ public class GameView extends View {
 
     public GameView(Context context) {
         super(context);
-        ballon = BitmapFactory.decodeResource(getResources(),R.drawable.balloon);
+        initBitmaps();
+        initPaints();
         balloonX=canvasWidth/2 - ballon.getWidth()/2;
 
+    }
+    private void initBitmaps(){
+        ballon = BitmapFactory.decodeResource(getResources(),R.drawable.balloon);
         for(int i=0;i<lifes;i++){
             Bitmap life=BitmapFactory.decodeResource(getResources(),R.drawable.heart);
             ballonLife[i]=life;
         }
-
-        for(int i=0;i<lifes;i++){
-            Bitmap life=BitmapFactory.decodeResource(getResources(),R.drawable.heart);
-            ballonLife[i]=life;
-        }
-
-
-
+    }
+    private void initPaints()
+    {
         scorePaint.setColor(Color.RED);
         scorePaint.setTextSize(70);
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
@@ -71,7 +67,6 @@ public class GameView extends View {
         shieldPaint.setAntiAlias(false);
         shieldPaint.setStrokeWidth(10);
         shieldPaint.setStyle(Paint.Style.STROKE);
-
     }
 
     @Override

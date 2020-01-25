@@ -4,10 +4,10 @@ public class GameConsumable implements IGameObjects {
     private int consumableX, consumableY=0;
     private int minBallonX, maxBallonX;
     private int speed;
-    private int type;
+    private ObjectType type;
     private int value;
 
-    public GameConsumable(int minBallonX, int maxBallonX, int speed, int type, int value) {
+    public GameConsumable(int minBallonX, int maxBallonX, int speed, ObjectType type, int value) {
         this.consumableX = (int)Math.floor(Math.random()*(maxBallonX-minBallonX))+minBallonX;
         this.consumableY = 0;
         this.minBallonX = minBallonX;
@@ -33,7 +33,7 @@ public class GameConsumable implements IGameObjects {
     }
 
     @Override
-    public int getType() {
+    public ObjectType getType() {
         return this.type;
     }
 }
