@@ -8,7 +8,7 @@ public class BronzeCoin extends NewGameConsumable {
 
     public BronzeCoin(int minBallonX, int maxBallonX,Bitmap bitmapBronzeCoin) {
         super(minBallonX, maxBallonX, 16, ObjectType.BITMAP, 10);
-        bitmapBronzeCoin=bitmapBronzeCoin;
+        this.bitmapBronzeCoin = bitmapBronzeCoin;
     }
 
     @Override
