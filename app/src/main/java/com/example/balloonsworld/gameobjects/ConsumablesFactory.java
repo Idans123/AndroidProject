@@ -13,7 +13,7 @@ public class ConsumablesFactory {
         this.context=context;
     }
 
-    public NewGameConsumable generateConsumable(int minBallonX, int maxBallonX, int level){
+    public GameConsumable generateConsumable(int minBallonX, int maxBallonX, int level){
         Random rand = new Random();
         int randRes= rand.nextInt(10);
 

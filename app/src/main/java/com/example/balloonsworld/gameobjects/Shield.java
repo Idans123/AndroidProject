@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-public class Shield extends NewGameConsumable {
+public class Shield extends GameConsumable {
     public Paint paint = new Paint();
     public Shield(int minBallonX, int maxBallonX) {
         super(minBallonX, maxBallonX, 20, ObjectType.CANVAS, -1);

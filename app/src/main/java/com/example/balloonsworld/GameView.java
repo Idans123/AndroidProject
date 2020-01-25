@@ -12,8 +12,7 @@ import android.view.View;
 
 import com.example.balloonsworld.gameobjects.ConsumablesFactory;
 import com.example.balloonsworld.gameobjects.IGameObjects;
-import com.example.balloonsworld.gameobjects.NewGameConsumable;
-import com.example.balloonsworld.gameobjects.ObjectType;
+import com.example.balloonsworld.gameobjects.GameConsumable;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -28,8 +27,8 @@ public class GameView extends View {
     private boolean timeToDropAnother=true;
 //    private int coinX, coinY=0, coinSpeed=16;
 //    private Paint coinPaint = new Paint();
-    private ArrayList<NewGameConsumable> coinsArr= new ArrayList<>();
-    private ArrayList<NewGameConsumable> coinsToRemove= new ArrayList<>();
+    private ArrayList<GameConsumable> coinsArr= new ArrayList<>();
+    private ArrayList<GameConsumable> coinsToRemove= new ArrayList<>();
 
 
     private  ArrayList<GameObstacle> obstaclesArr=new ArrayList<GameObstacle>();
@@ -114,7 +113,7 @@ public class GameView extends View {
 
 //        coinY+=coinSpeed;
         //update all coins position
-        for (NewGameConsumable coin : coinsArr){
+        for (GameConsumable coin : coinsArr){
             coin.update();
             if(newhitCheker(coin))
             {
@@ -185,10 +184,6 @@ public class GameView extends View {
 
     //will genarate a game consumable
     public void genarateConsumable(int minBallonX,int maxBallonX){
-
-        int randRes= rand.nextInt(10);
-
-
         dropItemType=!dropItemType;
         timeToDropAnother=false;
         new java.util.Timer().schedule(
@@ -200,9 +195,7 @@ public class GameView extends View {
                 },
                 500
         );
-
         coinsArr.add(consumablesFactory.generateConsumable(minBallonX,maxBallonX,2));
-
     }
 
     //will genarate an obstacle
