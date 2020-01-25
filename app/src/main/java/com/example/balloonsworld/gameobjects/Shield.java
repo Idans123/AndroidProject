@@ -8,7 +8,7 @@ import android.graphics.Paint;
 public class Shield extends GameConsumable {
     public Paint paint = new Paint();
     public Shield(int minBallonX, int maxBallonX) {
-        super(minBallonX, maxBallonX, 20, -1);
+        super(minBallonX, maxBallonX, 15, -1);
         paint.setColor(Color.BLUE);
         paint.setAntiAlias(false);
     }

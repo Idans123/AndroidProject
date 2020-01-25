@@ -7,7 +7,7 @@ public class BronzeCoin extends GameConsumable {
     private Bitmap bitmapBronzeCoin;
 
     public BronzeCoin(int minBallonX, int maxBallonX,Bitmap bitmapBronzeCoin) {
-        super(minBallonX, maxBallonX, 16, 10);
+        super(minBallonX, maxBallonX, 15, 10);
         this.bitmapBronzeCoin = bitmapBronzeCoin;
     }
 
