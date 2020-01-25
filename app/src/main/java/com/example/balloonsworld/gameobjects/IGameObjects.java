@@ -9,5 +9,4 @@ public interface IGameObjects {
     void update();
     void drawNow(Canvas canvas);
     boolean hitCheker(int canvasHeight, Bitmap ballon,int balloonX);
-    ObjectType getType();
 }

@@ -9,8 +9,8 @@ public class Wall extends GameObstacle {
 
     private android.graphics.Paint Paint = new Paint();
 
-    public Wall(int minBallonX, int maxBallonX, int speed, ObjectType type) {
-        super(minBallonX, maxBallonX, speed, type);
+    public Wall(int minBallonX, int maxBallonX, int speed) {
+        super(minBallonX, maxBallonX, speed);
         Paint.setColor(Color.BLACK);
         Paint.setAntiAlias(false);
     }

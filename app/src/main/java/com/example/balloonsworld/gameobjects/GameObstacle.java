@@ -7,15 +7,13 @@ public abstract class GameObstacle implements IGameObjects {
     private int obstacleX, obstacleY=0;
     private int minBallonX, maxBallonX;
     private int speed;
-    private ObjectType type;
 
-    public GameObstacle(int minBallonX, int maxBallonX, int speed, ObjectType type) {
+    public GameObstacle(int minBallonX, int maxBallonX, int speed) {
         this.obstacleX = (int)Math.floor(Math.random()*(maxBallonX-minBallonX))+minBallonX;
         this.obstacleY = 0;
         this.minBallonX = minBallonX;
         this.maxBallonX = maxBallonX;
         this.speed = speed;
-        this.type = type;
     }
 
     public int getMinBallonX(){
@@ -43,12 +41,9 @@ public abstract class GameObstacle implements IGameObjects {
     }
 
     @Override
-    public ObjectType getType() {
-        return this.type;
-    }
-
     public abstract void drawNow(Canvas canvas);
     public abstract boolean hitCheker(int canvasHeight, Bitmap ballon, int balloonX);
+
 }
 
 

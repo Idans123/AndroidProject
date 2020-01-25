@@ -12,11 +12,8 @@ import android.view.View;
 
 import com.example.balloonsworld.gameobjects.ConsumablesFactory;
 import com.example.balloonsworld.gameobjects.GameObstacle;
-import com.example.balloonsworld.gameobjects.IGameObjects;
 import com.example.balloonsworld.gameobjects.GameConsumable;
-import com.example.balloonsworld.gameobjects.ObjectType;
 import com.example.balloonsworld.gameobjects.ObstaclesFactory;
-import com.example.balloonsworld.gameobjects.Wall;
 
 import java.util.ArrayList;
 import java.util.Random;

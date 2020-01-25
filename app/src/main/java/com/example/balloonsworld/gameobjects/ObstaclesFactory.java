@@ -1,9 +1,6 @@
 package com.example.balloonsworld.gameobjects;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
-
-import com.example.balloonsworld.R;
 
 import java.util.Random;
 
@@ -18,10 +15,10 @@ public class ObstaclesFactory {
         int randRes= rand.nextInt(10);
 
         if(randRes<=3){
-            return new Wall(minBallonX,maxBallonX,15, ObjectType.BITMAP);
+            return new Wall(minBallonX,maxBallonX,15);
         }
         else{
-            return new WallBlock(minBallonX,maxBallonX,15, ObjectType.BITMAP);
+            return new WallZigZag(minBallonX,maxBallonX,15);
         }
     }
 

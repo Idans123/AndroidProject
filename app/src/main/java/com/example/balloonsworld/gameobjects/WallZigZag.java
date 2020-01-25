@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-public class WallBlock extends GameObstacle {
+public class WallZigZag extends GameObstacle {
 
     private android.graphics.Paint Paint = new Paint();
     private int xSpeed=10;
 
 
-    public WallBlock(int minBallonX, int maxBallonX, int speed, ObjectType type) {
-        super(minBallonX, maxBallonX, speed, type);
+    public WallZigZag(int minBallonX, int maxBallonX, int speed) {
+        super(minBallonX, maxBallonX, speed);
         Paint.setColor(Color.BLACK);
         Paint.setAntiAlias(false);
     }

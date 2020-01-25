@@ -5,8 +5,8 @@ import android.graphics.Canvas;
 
 public class SilverCoin extends GameConsumable {
     private Bitmap bitmapSilverCoin;
-    public SilverCoin(int minBallonX, int maxBallonX, Bitmap bitmapSilverCoin) {
-        super(minBallonX, maxBallonX, 18, ObjectType.BITMAP, 20);
+    public SilverCoin(int minBallonX, int maxBallonX, Bitmap bitmapSiverCoin) {
+        super(minBallonX, maxBallonX, 18, 20);
         this.bitmapSilverCoin=bitmapSilverCoin;
     }
 
