@@ -1,25 +1,19 @@
 package com.example.balloonsworld.gameobjects;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
-import androidx.core.graphics.drawable.IconCompat;
 
 import com.example.balloonsworld.R;
 
 import java.util.Random;
 
 public class ConsumablesFactory {
-    private int minBallonX, maxBallonX;
     private Context context;
-    public ConsumablesFactory(int minBallonX, int maxBallonX, Context context) {
-        this.minBallonX = minBallonX;
-        this.maxBallonX = maxBallonX;
+    public ConsumablesFactory(Context context) {
         this.context=context;
     }
 
-    public GameConsumable generateConsumable(int level){
+    public NewGameConsumable generateConsumable(int minBallonX, int maxBallonX, int level){
         Random rand = new Random();
         int randRes= rand.nextInt(10);
 

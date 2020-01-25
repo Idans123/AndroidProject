@@ -10,6 +10,11 @@ import android.graphics.Typeface;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.balloonsworld.gameobjects.ConsumablesFactory;
+import com.example.balloonsworld.gameobjects.IGameObjects;
+import com.example.balloonsworld.gameobjects.NewGameConsumable;
+import com.example.balloonsworld.gameobjects.ObjectType;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -23,8 +28,8 @@ public class GameView extends View {
     private boolean timeToDropAnother=true;
 //    private int coinX, coinY=0, coinSpeed=16;
 //    private Paint coinPaint = new Paint();
-    private ArrayList<GameConsumable> coinsArr=new  ArrayList<GameConsumable>();
-    private ArrayList<GameConsumable> coinsToRemove=new  ArrayList<GameConsumable>();
+    private ArrayList<NewGameConsumable> coinsArr= new ArrayList<>();
+    private ArrayList<NewGameConsumable> coinsToRemove= new ArrayList<>();
 
 
     private  ArrayList<GameObstacle> obstaclesArr=new ArrayList<GameObstacle>();
@@ -41,13 +46,13 @@ public class GameView extends View {
 
     private Paint shieldPaint=new Paint();
 
-
+    private ConsumablesFactory consumablesFactory;
     public GameView(Context context) {
         super(context);
         initBitmaps();
         initPaints();
         balloonX=canvasWidth/2 - ballon.getWidth()/2;
-
+        consumablesFactory = new ConsumablesFactory(context);
     }
     private void initBitmaps(){
         ballon = BitmapFactory.decodeResource(getResources(),R.drawable.balloon);
@@ -109,9 +114,9 @@ public class GameView extends View {
 
 //        coinY+=coinSpeed;
         //update all coins position
-        for (GameConsumable coin : coinsArr){
+        for (NewGameConsumable coin : coinsArr){
             coin.update();
-            if(hitCheker(coin))
+            if(newhitCheker(coin))
             {
                 int objectValue=coin.getValue();
                 if(objectValue>=0){
@@ -127,7 +132,12 @@ public class GameView extends View {
             else if(coin.getObjectY()>canvasHeight){
                 coinsToRemove.add(coin);
             }
-            canvas.drawCircle(coin.getObjectX(),coin.getObjectY(),coin.getRadius(),coin.getPaint());
+            if(coin.getType() == ObjectType.BITMAP){
+
+            }
+            else{
+                canvas.drawCircle(coin.getObjectX(),coin.getObjectY(),coin.getRadius(),coin.getPaint());
+            }
         }
         coinsArr.removeAll(coinsToRemove);
 
@@ -161,6 +171,11 @@ public class GameView extends View {
                 (canvasHeight - ballon.getHeight()*2+ballon.getHeight())>GameObject.getObjectY() &&
                 GameObject.getObjectX()>balloonX && GameObject.getObjectX()<ballon.getWidth()+balloonX);
     }
+    public boolean newhitCheker(IGameObjects GameObject){
+        return(canvasHeight - ballon.getHeight()*2<GameObject.getObjectY() &&
+                (canvasHeight - ballon.getHeight()*2+ballon.getHeight())>GameObject.getObjectY() &&
+                GameObject.getObjectX()>balloonX && GameObject.getObjectX()<ballon.getWidth()+balloonX);
+    }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -190,18 +205,20 @@ public class GameView extends View {
                 },
                 500
         );
-        if(randRes<=5){
-            coinsArr.add(new YellowCoin(minBallonX,maxBallonX));
 
-        }
-        else if(randRes>5&&randRes<7){
-            coinsArr.add(new GreenCoin(minBallonX,maxBallonX));
-
-        }
-        else{
-            coinsArr.add(new BlueCoin(minBallonX,maxBallonX));
-
-        }
+        coinsArr.add(consumablesFactory.generateConsumable(minBallonX,maxBallonX,2));
+//        if(randRes<=5){
+//            coinsArr.add(new YellowCoin(minBallonX,maxBallonX));
+//
+//        }
+//        else if(randRes>5&&randRes<7){
+//            coinsArr.add(new GreenCoin(minBallonX,maxBallonX));
+//
+//        }
+//        else{
+//            coinsArr.add(new BlueCoin(minBallonX,maxBallonX));
+//
+//        }
 
     }
 

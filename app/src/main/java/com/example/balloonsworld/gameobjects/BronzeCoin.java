@@ -2,7 +2,7 @@ package com.example.balloonsworld.gameobjects;
 
 import android.graphics.Bitmap;
 
-public class BronzeCoin extends GameConsumable {
+public class BronzeCoin extends NewGameConsumable {
     private Bitmap bitmapBronzeCoin;
 
     public BronzeCoin(int minBallonX, int maxBallonX,Bitmap bitmapBronzeCoin) {
