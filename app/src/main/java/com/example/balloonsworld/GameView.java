@@ -132,12 +132,7 @@ public class GameView extends View {
             else if(coin.getObjectY()>canvasHeight){
                 coinsToRemove.add(coin);
             }
-            if(coin.getType() == ObjectType.BITMAP){
-
-            }
-            else{
-                canvas.drawCircle(coin.getObjectX(),coin.getObjectY(),coin.getRadius(),coin.getPaint());
-            }
+            coin.drawNow(canvas);
         }
         coinsArr.removeAll(coinsToRemove);
 
@@ -207,18 +202,6 @@ public class GameView extends View {
         );
 
         coinsArr.add(consumablesFactory.generateConsumable(minBallonX,maxBallonX,2));
-//        if(randRes<=5){
-//            coinsArr.add(new YellowCoin(minBallonX,maxBallonX));
-//
-//        }
-//        else if(randRes>5&&randRes<7){
-//            coinsArr.add(new GreenCoin(minBallonX,maxBallonX));
-//
-//        }
-//        else{
-//            coinsArr.add(new BlueCoin(minBallonX,maxBallonX));
-//
-//        }
 
     }
 

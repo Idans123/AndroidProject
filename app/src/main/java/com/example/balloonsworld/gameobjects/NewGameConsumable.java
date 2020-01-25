@@ -1,6 +1,8 @@
 package com.example.balloonsworld.gameobjects;
 
-public class NewGameConsumable implements IGameObjects {
+import android.graphics.Canvas;
+
+public abstract class NewGameConsumable implements IGameObjects {
     private int consumableX, consumableY=0;
     private int minBallonX, maxBallonX;
     private int speed;
@@ -40,5 +42,6 @@ public class NewGameConsumable implements IGameObjects {
     public int getValue() {
         return value;
     }
+    public abstract void drawNow(Canvas canvas);
 }
 
