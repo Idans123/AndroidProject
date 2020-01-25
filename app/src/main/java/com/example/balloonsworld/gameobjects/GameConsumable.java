@@ -1,5 +1,6 @@
 package com.example.balloonsworld.gameobjects;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 public abstract class GameConsumable implements IGameObjects {
@@ -43,5 +44,6 @@ public abstract class GameConsumable implements IGameObjects {
         return value;
     }
     public abstract void drawNow(Canvas canvas);
+    public abstract boolean hitCheker(int canvasHeight, Bitmap ballon, int balloonX);
 }
 

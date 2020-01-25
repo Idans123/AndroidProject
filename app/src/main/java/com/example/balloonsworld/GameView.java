@@ -11,8 +11,12 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.balloonsworld.gameobjects.ConsumablesFactory;
+import com.example.balloonsworld.gameobjects.GameObstacle;
 import com.example.balloonsworld.gameobjects.IGameObjects;
 import com.example.balloonsworld.gameobjects.GameConsumable;
+import com.example.balloonsworld.gameobjects.ObjectType;
+import com.example.balloonsworld.gameobjects.ObstaclesFactory;
+import com.example.balloonsworld.gameobjects.Wall;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -25,8 +29,6 @@ public class GameView extends View {
     private int balloonX;
     private boolean dropItemType=true;//false for obstacle, true for consumable
     private boolean timeToDropAnother=true;
-//    private int coinX, coinY=0, coinSpeed=16;
-//    private Paint coinPaint = new Paint();
     private ArrayList<GameConsumable> coinsArr= new ArrayList<>();
     private ArrayList<GameConsumable> coinsToRemove= new ArrayList<>();
 
@@ -46,12 +48,15 @@ public class GameView extends View {
     private Paint shieldPaint=new Paint();
 
     private ConsumablesFactory consumablesFactory;
+    private ObstaclesFactory obstaclesFactory;
     public GameView(Context context) {
         super(context);
         initBitmaps();
         initPaints();
         balloonX=canvasWidth/2 - ballon.getWidth()/2;
         consumablesFactory = new ConsumablesFactory(context);
+        obstaclesFactory=new ObstaclesFactory(context);
+
     }
     private void initBitmaps(){
         ballon = BitmapFactory.decodeResource(getResources(),R.drawable.balloon);
@@ -115,7 +120,7 @@ public class GameView extends View {
         //update all coins position
         for (GameConsumable coin : coinsArr){
             coin.update();
-            if(newhitCheker(coin))
+            if(coin.hitCheker(canvasHeight,ballon,balloonX))
             {
                 int objectValue=coin.getValue();
                 if(objectValue>=0){
@@ -137,7 +142,7 @@ public class GameView extends View {
 
         for (GameObstacle obstacle :obstaclesArr){
             obstacle.update();
-            if(hitCheker(obstacle)&&!shield)
+            if(obstacle.hitCheker(canvasHeight,ballon,balloonX)&&!shield)
             {
                 lifes--;
                 obstaclesToRemove.add(obstacle);
@@ -146,30 +151,14 @@ public class GameView extends View {
             else if(obstacle.getObjectY()>canvasHeight){
                 obstaclesToRemove.add(obstacle);
             }
-            if(obstacle.getValue()=="Wall"){
-                canvas.drawRect(obstacle.getObjectX(),obstacle.getObjectY(),canvasWidth,obstacle.getObjectY()+obstacle.getRadius(),obstacle.getPaint());
-            }
+            obstacle.drawNow(canvas);
+
         }
         obstaclesArr.removeAll(obstaclesToRemove);
 
 
     }
-    public boolean hitCheker(int x, int y){
-        return(canvasHeight - ballon.getHeight()*2<y &&
-                (canvasHeight - ballon.getHeight()*2+ballon.getHeight())>y &&
-                x>ballon.getWidth() && x<ballon.getWidth()+balloonX);
-    }
-    //will check if an object of the game has hitted the ballon
-    public boolean hitCheker(GameObjects GameObject){
-        return(canvasHeight - ballon.getHeight()*2<GameObject.getObjectY() &&
-                (canvasHeight - ballon.getHeight()*2+ballon.getHeight())>GameObject.getObjectY() &&
-                GameObject.getObjectX()>balloonX && GameObject.getObjectX()<ballon.getWidth()+balloonX);
-    }
-    public boolean newhitCheker(IGameObjects GameObject){
-        return(canvasHeight - ballon.getHeight()*2<GameObject.getObjectY() &&
-                (canvasHeight - ballon.getHeight()*2+ballon.getHeight())>GameObject.getObjectY() &&
-                GameObject.getObjectX()>balloonX && GameObject.getObjectX()<ballon.getWidth()+balloonX);
-    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -211,7 +200,7 @@ public class GameView extends View {
                 },
                 500
         );
-        obstaclesArr.add(new WallObstacle(minBallonX,maxBallonX));
+        obstaclesArr.add(obstaclesFactory.generateObstacle(minBallonX,maxBallonX,2));
 
     }
     public void activateShield(){
