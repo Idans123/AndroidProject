@@ -26,8 +26,8 @@ public class GameView extends View {
     private int balloonX;
     private boolean dropItemType=true;//false for obstacle, true for consumable
     private boolean timeToDropAnother=true;
-    private ArrayList<GameConsumable> coinsArr= new ArrayList<>();
-    private ArrayList<GameConsumable> coinsToRemove= new ArrayList<>();
+    private ArrayList<GameConsumable> currentConsumeableArr = new ArrayList<>();
+    private ArrayList<GameConsumable> consumablesToRemove = new ArrayList<>();
 
 
     private  ArrayList<GameObstacle> obstaclesArr=new ArrayList<GameObstacle>();
@@ -115,7 +115,7 @@ public class GameView extends View {
 
 //        coinY+=coinSpeed;
         //update all coins position
-        for (GameConsumable coin : coinsArr){
+        for (GameConsumable coin : currentConsumeableArr){
             coin.update();
             if(coin.hitCheker(canvasHeight,ballon,balloonX))
             {
@@ -127,15 +127,15 @@ public class GameView extends View {
                     activateShield();
                 }
 
-                coinsToRemove.add(coin);
+                consumablesToRemove.add(coin);
                 System.out.println("Score: "+score);
             }
             else if(coin.getObjectY()>canvasHeight){
-                coinsToRemove.add(coin);
+                consumablesToRemove.add(coin);
             }
             coin.drawNow(canvas);
         }
-        coinsArr.removeAll(coinsToRemove);
+        currentConsumeableArr.removeAll(consumablesToRemove);
 
         for (GameObstacle obstacle :obstaclesArr){
             obstacle.update();
@@ -181,7 +181,7 @@ public class GameView extends View {
                 },
                 500
         );
-        coinsArr.add(consumablesFactory.generateConsumable(minBallonX,maxBallonX,2));
+        currentConsumeableArr.add(consumablesFactory.generateConsumable(minBallonX,maxBallonX,2));
     }
 
     //will genarate an obstacle
