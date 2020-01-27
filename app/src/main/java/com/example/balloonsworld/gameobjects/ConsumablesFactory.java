@@ -24,7 +24,8 @@ public class ConsumablesFactory {
             return new BronzeCoin(minBallonX,maxBallonX,arr);
         }
         else if(randRes>3&&randRes<5){
-            return new SilverCoin(minBallonX,maxBallonX,BitmapFactory.decodeResource(context.getResources(), R.drawable.silver));
+            ArrayList<Bitmap> arr = getSilverBitmapArr();
+            return new SilverCoin(minBallonX,maxBallonX,arr);
         }
         else if (randRes>5&&randRes<7){
             ArrayList<Bitmap> arr = getGoldBitmapArr();
@@ -50,6 +51,15 @@ public class ConsumablesFactory {
         coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.gold3));
         coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.gold4));
         coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.gold5));
+        return coins;
+    }
+    private ArrayList<Bitmap> getSilverBitmapArr(){
+        ArrayList<Bitmap> coins = new ArrayList<>();
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.silver));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.silver2));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.silver3));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.silver4));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.silver5));
         return coins;
     }
 }
