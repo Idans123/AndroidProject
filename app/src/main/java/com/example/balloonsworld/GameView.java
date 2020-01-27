@@ -7,14 +7,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.example.balloonsworld.gameobjects.ConsumablesFactory;
 import com.example.balloonsworld.gameobjects.GameObstacle;
 import com.example.balloonsworld.gameobjects.GameConsumable;
+import com.example.balloonsworld.gameobjects.LevelManager;
 import com.example.balloonsworld.gameobjects.ObstaclesFactory;
 
 import java.util.ArrayList;
@@ -23,6 +22,9 @@ import java.util.Random;
 public class GameView extends View {
 
     private GameEventListener listener;
+    private int level;
+    private LevelManager levelObj;
+    private boolean showingLevel=true;
 
     interface GameEventListener{
         void pauseGame();
@@ -57,17 +59,19 @@ public class GameView extends View {
 
     private Paint shieldPaint=new Paint();
 
-            private Bitmap pause;
+    private Bitmap pause;
 
     private ConsumablesFactory consumablesFactory;
     private ObstaclesFactory obstaclesFactory;
-    public GameView(Context context) {
+    public GameView(Context context,int level) {
         super(context);
         initBitmaps();
         initPaints();
         balloonX=canvasWidth/2 - ballon.getWidth()/2;
         consumablesFactory = new ConsumablesFactory(context);
         obstaclesFactory=new ObstaclesFactory(context);
+        this.level=level;
+        levelObj=new LevelManager(level);
 
 
 
@@ -96,13 +100,11 @@ public class GameView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-
-
         canvas.drawColor(Color.RED);
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
         canvas.drawColor(Color.RED);
+
         for(int i=lifes-1;i>=0;i--){
             int lifeX=(int) (canvasWidth-ballonLife[i].getWidth()-ballonLife[i].getWidth()*1.5*i);
             canvas.drawBitmap(ballonLife[i],lifeX,30,null);
@@ -111,20 +113,27 @@ public class GameView extends View {
         canvas.drawBitmap(this.pause,20,20,null);
         canvas.drawText("score: "+score,150,60,scorePaint);
 
-
         //update ballon position
         int minBallonX=ballon.getWidth();
         int maxBallonX = (int)(canvasWidth - (ballon.getWidth()*1.5));
 
-        if(!dropItemType&&timeToDropAnother){
-            genarateConsumable(minBallonX,maxBallonX);
-
+        if(showingLevel){
+            this.levelObj.update();
+            if(this.levelObj.getObjectY()>canvasHeight+200){
+                showingLevel=!showingLevel;
+            }
+            else{
+                this.levelObj.drawNow(canvas);
+            }
         }
-        else if(timeToDropAnother){
-
-            genarateObstacle(minBallonX,maxBallonX);
+        else{
+            if(!dropItemType&&timeToDropAnother){
+                genarateConsumable(minBallonX,maxBallonX);
+            }
+            else if(timeToDropAnother){
+                genarateObstacle(minBallonX,maxBallonX);
+            }
         }
-
         if(balloonX<minBallonX){
             balloonX=minBallonX;
         }
@@ -149,7 +158,6 @@ public class GameView extends View {
                 else{
                     activateShield();
                 }
-
                 consumablesToRemove.add(coin);
                 System.out.println("Score: "+score);
             }
@@ -159,7 +167,6 @@ public class GameView extends View {
             else{
                 coin.drawNow(canvas);
             }
-
         }
         currentConsumeableArr.removeAll(consumablesToRemove);
 
@@ -177,12 +184,11 @@ public class GameView extends View {
             else{
                 obstacle.drawNow(canvas);
             }
-
-
         }
         obstaclesArr.removeAll(obstaclesToRemove);
-
-
+        if(!showingLevel&&levelObj.progressManager(this.score)){
+            showingLevel=!showingLevel;
+        }
     }
 
     @Override

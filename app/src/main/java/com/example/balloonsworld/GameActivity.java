@@ -21,7 +21,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gameView = new GameView(this);
+        gameView = new GameView(this,1);
         gameView.setListner(new GameView.GameEventListener() {
             @Override
             public void pauseGame() {
