@@ -17,7 +17,8 @@ public class GoldCoin extends GameConsumable {
     public void drawNow(Canvas canvas) {
         canvas.drawBitmap(bitmapsGoldCoinArr.get(i/5),getObjectX(),getObjectY(),null);
         i++;
-        i=i%25;    }
+        i=i%25;
+    }
     public  boolean hitCheker(int canvasHeight, Bitmap ballon, int balloonX){
         return(canvasHeight - ballon.getHeight()*2<this.getObjectY() &&
                 (canvasHeight - ballon.getHeight()*2+ballon.getHeight())>this.getObjectY() &&

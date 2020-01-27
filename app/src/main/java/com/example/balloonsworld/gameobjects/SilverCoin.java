@@ -3,16 +3,21 @@ package com.example.balloonsworld.gameobjects;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import java.util.ArrayList;
+
 public class SilverCoin extends GameConsumable {
-    private Bitmap bitmapSilverCoin;
-    public SilverCoin(int minBallonX, int maxBallonX, Bitmap bitmapSiverCoin) {
+    private ArrayList<Bitmap> bitmapsSilverCoinArr;
+    private int i=0;
+    public SilverCoin(int minBallonX, int maxBallonX, ArrayList<Bitmap> bitmapSiverCoinArr) {
         super(minBallonX, maxBallonX, 15, 20);
-        this.bitmapSilverCoin=bitmapSiverCoin;
+        this.bitmapsSilverCoinArr=bitmapSiverCoinArr;
     }
 
     @Override
     public void drawNow(Canvas canvas) {
-        canvas.drawBitmap(bitmapSilverCoin,getObjectX(),getObjectY(),null);
+        canvas.drawBitmap(bitmapsSilverCoinArr.get(i/5),getObjectX(),getObjectY(),null);
+        i++;
+        i=i%25;
     }
     public  boolean hitCheker(int canvasHeight, Bitmap ballon, int balloonX){
         return(canvasHeight - ballon.getHeight()*2<this.getObjectY() &&
