@@ -1,10 +1,12 @@
 package com.example.balloonsworld.gameobjects;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.example.balloonsworld.R;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class ConsumablesFactory {
@@ -18,7 +20,14 @@ public class ConsumablesFactory {
         int randRes= rand.nextInt(10);
 
         if(randRes<=3){
-            return new BronzeCoin(minBallonX,maxBallonX,BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze));
+            ArrayList<Bitmap> coins = new ArrayList<>();
+            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze));
+            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze2));
+            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze3));
+            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze5));
+            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze6));
+//            return new BronzeCoin(minBallonX,maxBallonX,BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze));
+            return new BronzeCoin(minBallonX,maxBallonX,coins);
         }
         else if(randRes>3&&randRes<5){
             return new SilverCoin(minBallonX,maxBallonX,BitmapFactory.decodeResource(context.getResources(), R.drawable.silver));
