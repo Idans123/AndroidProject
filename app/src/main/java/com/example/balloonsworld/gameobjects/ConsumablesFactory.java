@@ -20,23 +20,36 @@ public class ConsumablesFactory {
         int randRes= rand.nextInt(10);
 
         if(randRes<=3){
-            ArrayList<Bitmap> coins = new ArrayList<>();
-            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze));
-            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze2));
-            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze3));
-            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze5));
-            coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze6));
-//            return new BronzeCoin(minBallonX,maxBallonX,BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze));
-            return new BronzeCoin(minBallonX,maxBallonX,coins);
+            ArrayList<Bitmap> arr = getBronzeBitmapArr();
+            return new BronzeCoin(minBallonX,maxBallonX,arr);
         }
         else if(randRes>3&&randRes<5){
             return new SilverCoin(minBallonX,maxBallonX,BitmapFactory.decodeResource(context.getResources(), R.drawable.silver));
         }
         else if (randRes>5&&randRes<7){
-            return new GoldCoin(minBallonX,maxBallonX,BitmapFactory.decodeResource(context.getResources(), R.drawable.gold));
+            ArrayList<Bitmap> arr = getGoldBitmapArr();
+            return new GoldCoin(minBallonX,maxBallonX,arr);
         }
         else{
             return new Shield(minBallonX,maxBallonX, BitmapFactory.decodeResource(context.getResources(),R.drawable.shield));
         }
+    }
+    private ArrayList<Bitmap> getBronzeBitmapArr(){
+        ArrayList<Bitmap> coins = new ArrayList<>();
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze2));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze3));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze4));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze5));
+        return coins;
+    }
+    private ArrayList<Bitmap> getGoldBitmapArr(){
+        ArrayList<Bitmap> coins = new ArrayList<>();
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.gold));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.gold2));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.gold3));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.gold4));
+        coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.gold5));
+        return coins;
     }
 }
