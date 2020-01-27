@@ -78,6 +78,7 @@ public class GameView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.drawColor(Color.RED);
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
 
@@ -133,7 +134,10 @@ public class GameView extends View {
             else if(coin.getObjectY()>canvasHeight){
                 consumablesToRemove.add(coin);
             }
-            coin.drawNow(canvas);
+            else{
+                coin.drawNow(canvas);
+            }
+
         }
         currentConsumeableArr.removeAll(consumablesToRemove);
 
@@ -148,7 +152,10 @@ public class GameView extends View {
             else if(obstacle.getObjectY()>canvasHeight){
                 obstaclesToRemove.add(obstacle);
             }
-            obstacle.drawNow(canvas);
+            else{
+                obstacle.drawNow(canvas);
+            }
+
 
         }
         obstaclesArr.removeAll(obstaclesToRemove);
@@ -197,7 +204,7 @@ public class GameView extends View {
                 },
                 500
         );
-        obstaclesArr.add(obstaclesFactory.generateObstacle(minBallonX,maxBallonX,2));
+        obstaclesArr.add(obstaclesFactory.generateObstacle(minBallonX,maxBallonX,2,ballon.getWidth()));
 
     }
     public void activateShield(){
