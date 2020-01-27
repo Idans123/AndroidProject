@@ -7,8 +7,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.balloonsworld.gameobjects.ConsumablesFactory;
 import com.example.balloonsworld.gameobjects.GameObstacle;
@@ -19,6 +21,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameView extends View {
+
+    private GameEventListener listener;
+
+    interface GameEventListener{
+        void pauseGame();
+        void resumeGame();
+    }
+    public void setListner(GameEventListener listener){
+        this.listener=listener;
+    }
+
     Random rand = new Random();
     private Bitmap ballon;
     private int canvasHeight;
@@ -44,6 +57,8 @@ public class GameView extends View {
 
     private Paint shieldPaint=new Paint();
 
+    private Drawable pause;
+
     private ConsumablesFactory consumablesFactory;
     private ObstaclesFactory obstaclesFactory;
     public GameView(Context context) {
@@ -54,6 +69,8 @@ public class GameView extends View {
         consumablesFactory = new ConsumablesFactory(context);
         obstaclesFactory=new ObstaclesFactory(context);
 
+
+
     }
     private void initBitmaps(){
         ballon = BitmapFactory.decodeResource(getResources(),R.drawable.balloon);
@@ -61,6 +78,8 @@ public class GameView extends View {
             Bitmap life=BitmapFactory.decodeResource(getResources(),R.drawable.heart);
             ballonLife[i]=life;
         }
+
+
     }
     private void initPaints()
     {
@@ -68,7 +87,6 @@ public class GameView extends View {
         scorePaint.setTextSize(70);
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
         scorePaint.setAntiAlias(true);
-
         shieldPaint.setColor(Color.BLUE);
         shieldPaint.setAntiAlias(false);
         shieldPaint.setStrokeWidth(10);
@@ -78,6 +96,9 @@ public class GameView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+
+
         canvas.drawColor(Color.RED);
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
@@ -86,6 +107,7 @@ public class GameView extends View {
             int lifeX=(int) (canvasWidth-ballonLife[i].getWidth()-ballonLife[i].getWidth()*1.5*i);
             canvas.drawBitmap(ballonLife[i],lifeX,30,null);
         }
+        
 
         canvas.drawText("score: "+score,20,60,scorePaint);
 
