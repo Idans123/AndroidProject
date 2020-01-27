@@ -80,7 +80,7 @@ public class GameView extends View {
         super.onDraw(canvas);
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
-
+        canvas.drawColor(Color.RED);
         for(int i=lifes-1;i>=0;i--){
             int lifeX=(int) (canvasWidth-ballonLife[i].getWidth()-ballonLife[i].getWidth()*1.5*i);
             canvas.drawBitmap(ballonLife[i],lifeX,30,null);

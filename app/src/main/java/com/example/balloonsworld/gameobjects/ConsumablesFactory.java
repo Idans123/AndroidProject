@@ -27,7 +27,7 @@ public class ConsumablesFactory {
             return new GoldCoin(minBallonX,maxBallonX,BitmapFactory.decodeResource(context.getResources(), R.drawable.gold));
         }
         else{
-            return new Shield(minBallonX,maxBallonX);
+            return new Shield(minBallonX,maxBallonX, BitmapFactory.decodeResource(context.getResources(),R.drawable.shield));
         }
     }
 }

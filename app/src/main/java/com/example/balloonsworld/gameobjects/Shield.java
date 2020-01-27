@@ -6,16 +6,16 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 public class Shield extends GameConsumable {
-    public Paint paint = new Paint();
-    public Shield(int minBallonX, int maxBallonX) {
+    private Bitmap bitmapShield;
+
+    public Shield(int minBallonX, int maxBallonX, Bitmap bitmapShield) {
         super(minBallonX, maxBallonX, 15, -1);
-        paint.setColor(Color.BLUE);
-        paint.setAntiAlias(false);
+        this.bitmapShield = bitmapShield;
     }
 
     @Override
     public void drawNow(Canvas canvas) {
-        canvas.drawCircle(getObjectX(),getObjectY(),35,paint);
+        canvas.drawBitmap(bitmapShield,getObjectX(),getObjectY(),null);
     }
 
     public  boolean hitCheker(int canvasHeight, Bitmap ballon, int balloonX){
