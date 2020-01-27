@@ -40,6 +40,10 @@ public abstract class GameObstacle implements IGameObjects {
         this.obstacleY+=speed;
     }
 
+    public void fixPosition(int x){
+        this.obstacleX=x;
+    }
+
     @Override
     public abstract void drawNow(Canvas canvas);
     public abstract boolean hitCheker(int canvasHeight, Bitmap ballon, int balloonX);
