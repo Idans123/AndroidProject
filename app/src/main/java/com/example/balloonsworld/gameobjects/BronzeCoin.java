@@ -15,8 +15,6 @@ public class BronzeCoin extends GameConsumable {
 
     @Override
     public void drawNow(Canvas canvas) {
-//        canvas.drawBitmap(bitmapBronzeCoin,getObjectX(),getObjectY(),null);
-
             canvas.drawBitmap(bitmapsBronzeCoinArr.get(i/5),getObjectX(),getObjectY(),null);
             i++;
             i=i%25;
