@@ -57,7 +57,7 @@ public class GameView extends View {
 
     private Paint shieldPaint=new Paint();
 
-    private Drawable pause;
+            private Bitmap pause;
 
     private ConsumablesFactory consumablesFactory;
     private ObstaclesFactory obstaclesFactory;
@@ -78,12 +78,12 @@ public class GameView extends View {
             Bitmap life=BitmapFactory.decodeResource(getResources(),R.drawable.heart);
             ballonLife[i]=life;
         }
-
+        this.pause=BitmapFactory.decodeResource(getResources(),R.drawable.pause);
 
     }
     private void initPaints()
     {
-        scorePaint.setColor(Color.RED);
+        scorePaint.setColor(Color.YELLOW);
         scorePaint.setTextSize(70);
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
         scorePaint.setAntiAlias(true);
@@ -108,8 +108,8 @@ public class GameView extends View {
             canvas.drawBitmap(ballonLife[i],lifeX,30,null);
         }
         
-
-        canvas.drawText("score: "+score,20,60,scorePaint);
+        canvas.drawBitmap(this.pause,20,20,null);
+        canvas.drawText("score: "+score,150,60,scorePaint);
 
 
         //update ballon position
@@ -189,7 +189,13 @@ public class GameView extends View {
     public boolean onTouchEvent(MotionEvent event) {
 
         switch (event.getAction()){
+
             case MotionEvent.ACTION_DOWN:
+                System.out.println(event.getX());
+                System.out.println(event.getY());
+                if(event.getX()<120&&event.getY()<120){
+                    listener.pauseGame();
+                }
             case MotionEvent.ACTION_MOVE:
                 balloonX=(int)event.getX();
 //                System.out.println(event.getX()+","+event.getY());

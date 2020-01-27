@@ -1,10 +1,12 @@
 package com.example.balloonsworld;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
@@ -24,6 +26,12 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void pauseGame() {
                 timer.cancel();
+                AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+                builder.setTitle("Exit")
+                        .setMessage("Are you sure you want to exit?")
+                        .setPositiveButton("Yes", new AlertDialogListener())
+                        .setNegativeButton("No",new AlertDialogListener())
+                        .show();
             }
 
             @Override
@@ -56,6 +64,14 @@ public class GameActivity extends AppCompatActivity {
                 });
             }
         },0,interval);
+    }
+    private class AlertDialogListener implements DialogInterface.OnClickListener{
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            if(which == DialogInterface.BUTTON_POSITIVE){
+                finish();
+            }
+        }
     }
 
 }
