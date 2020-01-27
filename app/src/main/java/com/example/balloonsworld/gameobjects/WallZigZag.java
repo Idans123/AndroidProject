@@ -9,6 +9,7 @@ public class WallZigZag extends GameObstacle {
 
     private android.graphics.Paint Paint = new Paint();
     private int xSpeed=10;
+    private boolean goingRight=true;
 
 
     public WallZigZag(int minBallonX, int maxBallonX, int speed) {
@@ -30,11 +31,13 @@ public class WallZigZag extends GameObstacle {
     @Override
     public void update() {
         super.update();
-        if(getObjectX()+300>this.getMaxBallonX()){
+        if(getObjectX()+300>this.getMaxBallonX()&&goingRight){
             xSpeed*=-1;
+            goingRight=!goingRight;
         }
-        else if(getObjectX()<this.getMinBallonX()){
+        else if(getObjectX()<this.getMinBallonX()&&!goingRight){
             xSpeed*=-1;
+            goingRight=!goingRight;
         }
         this.setObstacleX(xSpeed);
 
