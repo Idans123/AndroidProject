@@ -83,7 +83,7 @@ public class GameView extends View {
         consumablesFactory = new ConsumablesFactory(context);
         obstaclesFactory=new ObstaclesFactory(context);
         this.level=level;
-        levelObj=new LevelManager(level);
+        levelObj=new LevelManager(level,context);
     }
     private void initBackground() {
         this.background = BitmapFactory.decodeResource(getResources(),R.drawable.background);

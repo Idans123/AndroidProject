@@ -1,10 +1,13 @@
 package com.example.balloonsworld.gameobjects;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+
+import com.example.balloonsworld.R;
 
 import java.util.HashMap;
 
@@ -14,15 +17,18 @@ public class LevelManager implements IGameObjects {
     private Paint paint;
     private int level;
     private HashMap<Integer,Integer> levelToScoreDict= new HashMap<Integer, Integer>();
+    private Context context;
+    private String [] scoresFromRes;
 
-    public LevelManager(int level) {
-        initDict();
+    public LevelManager(int level, Context context) {
         this.level=level;
         this.levelY = 0;
         paint=new Paint();
         paint.setColor(Color.YELLOW);
         paint.setTextSize(200);
         paint.setTypeface(Typeface.DEFAULT_BOLD);
+        this.context = context;
+        initDict();
     }
 
     @Override
@@ -66,12 +72,8 @@ public class LevelManager implements IGameObjects {
     }
     private void initDict()
     {
-        levelToScoreDict.put(1,50);
-        levelToScoreDict.put(2,100);
-        levelToScoreDict.put(3,150);
-        levelToScoreDict.put(4,400);
-        levelToScoreDict.put(5,500);
-        levelToScoreDict.put(6,600);
-        levelToScoreDict.put(7,700);
+        this.scoresFromRes = this.context.getResources().getStringArray(R.array.levelsToScore);
+        for(int i=0; i<scoresFromRes.length;i++)
+            levelToScoreDict.put(i+1, Integer.valueOf(scoresFromRes[i]));
     }
 }
