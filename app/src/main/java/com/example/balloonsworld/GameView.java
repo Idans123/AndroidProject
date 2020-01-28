@@ -118,17 +118,14 @@ public class GameView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        //drawing our static objects: PAUSE, LIFES and SCORE
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
         canvas.drawBitmap(background,null,rect,null);
-
-        for(int i=lifes-1;i>=0;i--){
-            int lifeX=(int) (canvasWidth-ballonLife[i].getWidth()-ballonLife[i].getWidth()*1.5*i);
-            canvas.drawBitmap(ballonLife[i],lifeX,30,null);
-        }
-        
+        drawLifes(canvas);
         canvas.drawBitmap(this.pause,20,20,null);
-        canvas.drawText("score: "+score,150,60,scorePaint);
+        canvas.drawText("score: "+score,150,60,scorePaint); //TO DO - Localize "Score" to hebrew
 
         //update ballon position
         int minBallonX=ballon.getWidth();
@@ -158,7 +155,7 @@ public class GameView extends View {
             balloonX=maxBallonX;
         }
         if(shield){
-            canvas.drawCircle((int)(balloonX+ballon.getWidth()/2),(int)(canvasHeight - ballon.getHeight()*2 + ballon.getHeight()/2),ballon.getHeight()/2+10,shieldPaint);
+            drawShield(canvas);
         }
         canvas.drawBitmap(ballon,balloonX,canvasHeight - ballon.getHeight()*2,null);
 
@@ -206,6 +203,17 @@ public class GameView extends View {
         if(!showingLevel&&levelObj.progressManager(this.score)){
             showingLevel=!showingLevel;
         }
+    }
+
+    private void drawLifes(Canvas canvas) {
+        for(int i=lifes-1;i>=0;i--){
+            int lifeX=(int) (canvasWidth-ballonLife[i].getWidth()-ballonLife[i].getWidth()*1.5*i);
+            canvas.drawBitmap(ballonLife[i],lifeX,30,null);
+        }
+    }
+
+    private void drawShield(Canvas canvas) {
+        canvas.drawCircle((int)(balloonX+ballon.getWidth()/2),(int)(canvasHeight - ballon.getHeight()*2 + ballon.getHeight()/2),ballon.getHeight()/2+10,shieldPaint);
     }
 
     @Override
