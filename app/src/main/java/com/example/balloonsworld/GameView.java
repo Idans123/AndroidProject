@@ -1,12 +1,16 @@
 package com.example.balloonsworld;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -20,12 +24,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameView extends View {
-
     private GameEventListener listener;
-    private int level;
-    private LevelManager levelObj;
-    private boolean showingLevel=true;
-
     interface GameEventListener{
         void pauseGame();
         void resumeGame();
@@ -34,8 +33,19 @@ public class GameView extends View {
         this.listener=listener;
     }
 
+    private int level;
+    private LevelManager levelObj;
+    private boolean showingLevel=true;
     Random rand = new Random();
+
     private Bitmap ballon;
+
+    //Background-params
+    private Bitmap background;
+    private Rect rect;
+    int dWidth, dHeight;
+    //Background-params
+
     private int canvasHeight;
     private int canvasWidth;
     private int balloonX;
@@ -63,8 +73,10 @@ public class GameView extends View {
 
     private ConsumablesFactory consumablesFactory;
     private ObstaclesFactory obstaclesFactory;
+
     public GameView(Context context,int level) {
         super(context);
+        initBackground();
         initBitmaps();
         initPaints();
         balloonX=canvasWidth/2 - ballon.getWidth()/2;
@@ -72,9 +84,15 @@ public class GameView extends View {
         obstaclesFactory=new ObstaclesFactory(context);
         this.level=level;
         levelObj=new LevelManager(level);
-
-
-
+    }
+    private void initBackground() {
+        this.background = BitmapFactory.decodeResource(getResources(),R.drawable.background);
+        Display display = ((Activity)getContext()).getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        this.dWidth = size.x;
+        this.dHeight = size.y;
+        this.rect = new Rect(0,0,dWidth,dHeight);
     }
     private void initBitmaps(){
         ballon = BitmapFactory.decodeResource(getResources(),R.drawable.balloon);
@@ -83,8 +101,8 @@ public class GameView extends View {
             ballonLife[i]=life;
         }
         this.pause=BitmapFactory.decodeResource(getResources(),R.drawable.pause);
-
     }
+
     private void initPaints()
     {
         scorePaint.setColor(Color.YELLOW);
@@ -100,10 +118,9 @@ public class GameView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.RED);
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
-        canvas.drawColor(Color.RED);
+        canvas.drawBitmap(background,null,rect,null);
 
         for(int i=lifes-1;i>=0;i--){
             int lifeX=(int) (canvasWidth-ballonLife[i].getWidth()-ballonLife[i].getWidth()*1.5*i);
