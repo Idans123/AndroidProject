@@ -32,11 +32,11 @@ public class HighScoresActivity extends AppCompatActivity {
         stringToObjectMap.put("points","100");
         stomList.add(stringToObjectMap);
 
-        HashMap<String,Object> stringToObjectMap1 = new HashMap<String, Object>();
+        stringToObjectMap = new HashMap<String, Object>();;
         stringToObjectMap.put("index","2.");
         stringToObjectMap.put("name","Yosi");
         stringToObjectMap.put("points","70");
-        stomList.add(stringToObjectMap1);
+        stomList.add(stringToObjectMap);
 
     }
 }
