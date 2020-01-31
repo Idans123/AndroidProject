@@ -41,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button highScoresBtn = findViewById(R.id.highScoresBtn);
+        highScoresBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HighScoresActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
