@@ -14,7 +14,7 @@ public abstract class GameConsumable implements IGameObjects {
         this.consumableY = 0;
         this.minBallonX = minBallonX;
         this.maxBallonX = maxBallonX;
-        this.speed = speed;
+        this.speed = speed+5;
         this.value = value;
     }
 

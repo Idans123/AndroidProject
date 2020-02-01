@@ -43,7 +43,7 @@ public class LevelManager implements IGameObjects {
 
     @Override
     public void update() {
-        this.levelY+=10;
+        this.levelY+=this.level+5;
     }
 
     @Override

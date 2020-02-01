@@ -13,7 +13,7 @@ public abstract class GameObstacle implements IGameObjects {
         this.obstacleY = 0;
         this.minBallonX = minBallonX;
         this.maxBallonX = maxBallonX;
-        this.speed = speed;
+        this.speed = speed+5;
     }
 
     public int getMinBallonX(){

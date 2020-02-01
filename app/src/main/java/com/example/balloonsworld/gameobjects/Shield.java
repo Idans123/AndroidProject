@@ -8,8 +8,8 @@ import android.graphics.Paint;
 public class Shield extends GameConsumable {
     private Bitmap bitmapShield;
 
-    public Shield(int minBallonX, int maxBallonX, Bitmap bitmapShield) {
-        super(minBallonX, maxBallonX, 15, -1);
+    public Shield(int minBallonX, int maxBallonX, Bitmap bitmapShield,int level) {
+        super(minBallonX, maxBallonX, level, -1);
         this.bitmapShield = bitmapShield;
     }
 

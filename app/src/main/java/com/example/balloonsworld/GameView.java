@@ -119,6 +119,7 @@ public class GameView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+
         //drawing our static objects: PAUSE, LIFES and SCORE
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
@@ -132,13 +133,17 @@ public class GameView extends View {
         int maxBallonX = (int)(canvasWidth - (ballon.getWidth()*1.5));
 
         if(showingLevel){
-            this.levelObj.update();
-            if(this.levelObj.getObjectY()>canvasHeight+200){
-                showingLevel=!showingLevel;
+            if(currentConsumeableArr.size()==0&&obstaclesArr.size()==0){
+                this.levelObj.update();
+                if(this.levelObj.getObjectY()>canvasHeight+200){
+                    showingLevel=!showingLevel;
+                }
+                else{
+                    this.levelObj.drawNow(canvas);
+                }
+
             }
-            else{
-                this.levelObj.drawNow(canvas);
-            }
+
         }
         else{
             if(!dropItemType&&timeToDropAnother){
@@ -201,6 +206,7 @@ public class GameView extends View {
         }
         obstaclesArr.removeAll(obstaclesToRemove);
         if(!showingLevel&&levelObj.progressManager(this.score)){
+            this.level=levelObj.getLevel();
             showingLevel=!showingLevel;
         }
     }
@@ -238,6 +244,7 @@ public class GameView extends View {
     public void genarateConsumable(int minBallonX,int maxBallonX){
         dropItemType=!dropItemType;
         timeToDropAnother=false;
+        currentConsumeableArr.add(consumablesFactory.generateConsumable(minBallonX,maxBallonX,level));
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
@@ -245,15 +252,16 @@ public class GameView extends View {
                         timeToDropAnother=true;
                     }
                 },
-                500
+                2000-(level*100)
         );
-        currentConsumeableArr.add(consumablesFactory.generateConsumable(minBallonX,maxBallonX,2));
+
     }
 
     //will genarate an obstacle
     public void genarateObstacle(int minBallonX,int maxBallonX){
         dropItemType=!dropItemType;
         timeToDropAnother=false;
+        obstaclesArr.add(obstaclesFactory.generateObstacle(minBallonX,maxBallonX,level,ballon.getWidth()));
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
@@ -261,9 +269,9 @@ public class GameView extends View {
                         timeToDropAnother=true;
                     }
                 },
-                500
+                2000-(level*100)
         );
-        obstaclesArr.add(obstaclesFactory.generateObstacle(minBallonX,maxBallonX,2,ballon.getWidth()));
+
 
     }
     public void activateShield(){

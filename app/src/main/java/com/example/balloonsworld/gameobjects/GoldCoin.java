@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class GoldCoin extends GameConsumable {
     private ArrayList<Bitmap> bitmapsGoldCoinArr;
     private int i=0;
-    public GoldCoin(int minBallonX, int maxBallonX, ArrayList<Bitmap> bitmapGoldCoin) {
-        super(minBallonX, maxBallonX, 15, 40);
+    public GoldCoin(int minBallonX, int maxBallonX, ArrayList<Bitmap> bitmapGoldCoin,int level) {
+        super(minBallonX, maxBallonX, level, 40);
         this.bitmapsGoldCoinArr=bitmapGoldCoin;
     }
 

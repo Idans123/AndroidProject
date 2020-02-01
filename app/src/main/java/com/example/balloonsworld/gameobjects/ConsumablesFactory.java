@@ -21,18 +21,18 @@ public class ConsumablesFactory {
 
         if(randRes<=3){
             ArrayList<Bitmap> arr = getBronzeBitmapArr();
-            return new BronzeCoin(minBallonX,maxBallonX,arr);
+            return new BronzeCoin(minBallonX,maxBallonX,arr,level);
         }
         else if(randRes>3&&randRes<5){
             ArrayList<Bitmap> arr = getSilverBitmapArr();
-            return new SilverCoin(minBallonX,maxBallonX,arr);
+            return new SilverCoin(minBallonX,maxBallonX,arr,level);
         }
         else if (randRes>5&&randRes<7){
             ArrayList<Bitmap> arr = getGoldBitmapArr();
-            return new GoldCoin(minBallonX,maxBallonX,arr);
+            return new GoldCoin(minBallonX,maxBallonX,arr,level);
         }
         else{
-            return new Shield(minBallonX,maxBallonX, BitmapFactory.decodeResource(context.getResources(),R.drawable.shield));
+            return new Shield(minBallonX,maxBallonX, BitmapFactory.decodeResource(context.getResources(),R.drawable.shield),level);
         }
     }
     private ArrayList<Bitmap> getBronzeBitmapArr(){

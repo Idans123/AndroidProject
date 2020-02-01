@@ -24,6 +24,7 @@ public class Wall extends GameObstacle {
         }
 //        Paint.setColor(Color.BLACK);
         Paint.setAntiAlias(false);
+
     }
 
     public  void drawNow(Canvas canvas){

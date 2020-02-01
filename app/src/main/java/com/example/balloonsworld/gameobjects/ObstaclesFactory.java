@@ -14,17 +14,22 @@ public class ObstaclesFactory {
         Random rand = new Random();
         int randRes= rand.nextInt(20);
 
+
+
         if(randRes<=4){
-            return new Wall(minBallonX,maxBallonX,15,ballonWidth);
+            return new Wall(minBallonX,maxBallonX,level,ballonWidth);
         }
         else if(randRes<=9){
-            return new WallLeft(minBallonX,maxBallonX,15,ballonWidth);
+            return new WallLeft(minBallonX,maxBallonX,level,ballonWidth);
         }
         else if(randRes<=14){
-            return new WallWithGap(minBallonX,maxBallonX,15,ballonWidth);
+            return new WallWithGap(minBallonX,maxBallonX,level,ballonWidth);
+        }
+        else if(randRes<=0){
+            return new BigBall(minBallonX,maxBallonX,level);
         }
         else{
-            return new WallZigZag(minBallonX,maxBallonX,15);
+            return new WallZigZag(minBallonX,maxBallonX,level);
         }
     }
 
