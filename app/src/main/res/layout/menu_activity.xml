@@ -1,38 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    <ImageView
-        style="@style/background"/>
+    <ImageView style="@style/background" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
+        android:text="@string/helloTV"
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:id="@+id/helloUserTV"/>
+        android:id="@+id/helloUserTV"
+        android:fontFamily="casual"
+        />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonsRL"
-        android:layout_centerInParent="true">
+        android:layout_marginTop="250dp"
+        android:layout_marginStart="50dp">
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:id="@+id/startBtn"
-            android:text="Start"/>
+            android:text="@string/startBtn"
+            android:background="@drawable/green_btn"
+            android:alpha="0.9"
+            android:padding="10dp"
+            android:textStyle="bold"/>
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/exitBtn"
-            android:layout_below="@+id/startBtn"
-            android:text="Exit"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:id="@+id/highScoresBtn"
-            android:layout_below="@+id/exitBtn"
-            android:text="High scores"/>
+            android:layout_below="@+id/startBtn"
+            android:text="@string/high_scoresBtn"
+            android:alpha="0.9"
+            android:background="@drawable/yellow_btn"
+            android:padding="10dp"
+            android:layout_marginTop="40dp"
+            android:textStyle="bold"/>
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:id="@+id/exitBtn"
+            android:layout_below="@+id/highScoresBtn"
+            android:text="@string/exitBtn"
+            android:background="@drawable/red_btn"
+            android:alpha="0.9"
+            android:padding="10dp"
+            android:layout_marginTop="40dp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/balloonRL"
+        android:layout_toEndOf="@+id/buttonsRL"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="40dp">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/balloon_menu"
+            android:scaleType="fitXY"
+            android:background="@null"/>
     </RelativeLayout>
 </RelativeLayout>
