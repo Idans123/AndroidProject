@@ -22,6 +22,16 @@ public class LevelsActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Button tutorialBtn = findViewById(R.id.tutorialBtn);
+        tutorialBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent intent = new Intent(LevelsActivity.this, GameActivity.class);
+            intent.putExtra("player_name",getIntent().getStringExtra("player_name"));
+            intent.putExtra("level",0);
+            startActivity(intent);
+            }
+        });
         LinearLayout btnsLayout1 = findViewById(R.id.levelsLL1);
         for(int i=1;i<=5;i++){
             Button button = new Button(this);
@@ -65,7 +75,6 @@ public class LevelsActivity extends AppCompatActivity {
             button.setOnClickListener(levelListener);
             btnsLayout4.addView(button);
         }
-
     }
     private class LevelListener implements View.OnClickListener{
         @Override
