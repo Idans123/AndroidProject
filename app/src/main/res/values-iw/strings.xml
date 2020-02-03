@@ -8,4 +8,8 @@
     <string name="startBtn">התחל</string>
     <string name="exitBtn">יציאה</string>
     <string name="high_scoresBtn">טבלת שיאים</string>
+    <string name="exit_message">האם אתה בטוח שברצונך לצאת?</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="exit">יציאה</string>
 </resources>

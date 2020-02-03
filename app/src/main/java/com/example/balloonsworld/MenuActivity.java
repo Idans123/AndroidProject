@@ -27,12 +27,7 @@ public class MenuActivity extends AppCompatActivity {
         exitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
-                builder.setTitle("Exit")
-                        .setMessage("Are you sure you want to exit?")
-                        .setPositiveButton("Yes", new MenuActivity.AlertDialogListener())
-                        .setNegativeButton("No",new MenuActivity.AlertDialogListener())
-                        .show();
+                showExitDialog();
             }
         });
         Button startBtn = findViewById(R.id.startBtn);
@@ -53,15 +48,17 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void showExitDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
+        builder.setTitle(getString(R.string.exit))
+                .setMessage(getString(R.string.exit_message))
+                .setPositiveButton(getString(R.string.yes), new AlertDialogListener())
+                .setNegativeButton(getString(R.string.no), new AlertDialogListener())
+                .show();
+    }
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
-        builder.setTitle("Exit")
-                .setMessage("Are you sure you want to exit?")
-                .setPositiveButton("Yes", new MenuActivity.AlertDialogListener())
-                .setNegativeButton("No",new MenuActivity.AlertDialogListener())
-                .show();
+        showExitDialog();
     }
     private class AlertDialogListener implements DialogInterface.OnClickListener{
         @Override
