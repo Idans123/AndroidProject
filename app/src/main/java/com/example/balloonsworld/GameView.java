@@ -28,7 +28,7 @@ public class GameView extends View {
     interface GameEventListener{
         void pauseGame();
         void resumeGame();
-        void endGame();
+        void endGame(int score,int level);
     }
     public void setListner(GameEventListener listener){
         this.listener=listener;
@@ -129,6 +129,10 @@ public class GameView extends View {
         canvas.drawBitmap(this.pause,20,20,null);
         canvas.drawText("score: "+score,150,60,scorePaint); //TO DO - Localize "Score" to hebrew
 
+        if(lifes==0){
+            listener.endGame(this.score,this.level);
+        }
+
         //update ballon position
         int minBallonX=ballon.getWidth();
         int maxBallonX = (int)(canvasWidth - (ballon.getWidth()*1.5));
@@ -195,6 +199,7 @@ public class GameView extends View {
             if(obstacle.hitCheker(canvasHeight,ballon,balloonX)&&!shield)
             {
                 lifes--;
+
                 obstaclesToRemove.add(obstacle);
                 //end game, player hit obstacle
             }

@@ -40,7 +40,7 @@ public class GameActivity extends AppCompatActivity {
         },0,interval);
     }
     public void initGameView(){
-        gameView = new GameView(this,1);
+        gameView = new GameView(this,5);
         gameView.setListner(new GameView.GameEventListener() {
             @Override
             public void pauseGame() {
@@ -82,8 +82,13 @@ public class GameActivity extends AppCompatActivity {
             }
 
             @Override
-            public void endGame() {
-                
+            public void endGame(int score,int level) {
+                timer.cancel();
+                final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+
+                View endGameDialog=getLayoutInflater().inflate(R.layout.end_game_menu,null);
+
+                menuDialog= builder.setView(endGameDialog).show();
             }
 
             public void exitGame(){
@@ -116,13 +121,9 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-    private class AlertDialogListener implements DialogInterface.OnClickListener{
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            if(which == DialogInterface.BUTTON_POSITIVE){
-                finish();
-            }
-        }
+    private int isInTop10(int score){
+
+        return 0;
     }
 
 
