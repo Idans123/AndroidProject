@@ -2,6 +2,8 @@ package com.example.balloonsworld;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -19,6 +21,13 @@ public class HighScoresActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.high_scores_layout);
+        Button backBtn = findViewById(R.id.backfromhighscore);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
         ListView listView = findViewById(R.id.high_scores_list);
         stomList = new ArrayList<HashMap<String, Object>>();

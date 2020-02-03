@@ -19,6 +19,7 @@
         <activity android:name=".GameActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".HighScoresActivity"/>
         <activity android:name=".MenuActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".LevelsActivity"/>
     </application>
 
 </manifest>

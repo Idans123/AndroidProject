@@ -34,7 +34,10 @@ public class MenuActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, GameActivity.class);
+//                Intent intent = new Intent(MenuActivity.this, GameActivity.class);
+//                intent.putExtra("player_name",getIntent().getStringExtra("player_name"));
+//                startActivity(intent);
+                Intent intent = new Intent(MenuActivity.this, LevelsActivity.class);
                 intent.putExtra("player_name",getIntent().getStringExtra("player_name"));
                 startActivity(intent);
             }
