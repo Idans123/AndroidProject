@@ -35,16 +35,17 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
-        this.initGameView();
+
 
         currentUserName = getIntent().getStringExtra("player_name");
-        level = getIntent().getIntExtra("level",0);
+        level = Integer.parseInt(getIntent().getStringExtra("level"));
         if(level==0){
-            gameViewTutorial=new GameViewTutorial(this,(SensorManager)getSystemService(SENSOR_SERVICE));
+            initGameViewTutorial();
             setContentView(gameViewTutorial);
         }
         else{
-                    setContentView(gameView);
+            this.initGameView();
+            setContentView(gameView);
         }
 
 
@@ -67,10 +68,34 @@ public class GameActivity extends AppCompatActivity {
             }
         },0,interval);
     }
+    public void initGameViewTutorial(){
+        gameViewTutorial=new GameViewTutorial(this,(SensorManager)getSystemService(SENSOR_SERVICE));
+        gameViewTutorial.setListner(new GameViewTutorial.GameEventListener(){
+
+            @Override
+            public void pauseGame() {
+
+            }
+
+
+
+            @Override
+            public void endGame() {
+                timer.cancel();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putInt("level",1);
+
+                editor.commit();
+                finish();
+
+            }
+        });
+    }
 
 
     public void initGameView(){
-        gameView = new GameView(this,5,(SensorManager)getSystemService(SENSOR_SERVICE));
+        gameView = new GameView(this,this.level,(SensorManager)getSystemService(SENSOR_SERVICE));
         gameView.setListner(new GameView.GameEventListener() {
             @Override
             public void pauseGame() {

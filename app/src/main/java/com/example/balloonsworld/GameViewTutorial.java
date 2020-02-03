@@ -24,6 +24,18 @@ import com.example.balloonsworld.gameobjects.TutorialManager;
 
 public class GameViewTutorial extends View implements SensorEventListener {
 
+    private GameViewTutorial.GameEventListener listener;
+
+
+
+    interface GameEventListener{
+        void pauseGame();
+        void endGame();
+    }
+    public void setListner(GameViewTutorial.GameEventListener listener){
+        this.listener=listener;
+    }
+
     SensorManager manager;
     Sensor sensor;
 
@@ -116,7 +128,7 @@ public class GameViewTutorial extends View implements SensorEventListener {
                         this.coin=consumablesFactory.generateConsumableForTutorial(minBallonX,maxBallonX);
                     }
                     else if(this.tutorialStage==6){
-                        
+                        listener.endGame();
                     }
 
                 }
