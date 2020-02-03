@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Game paused"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:id="@+id/pauseMenuTitleTV"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pauseMenuTitleTV"
+        android:layout_centerHorizontal="true"
+        android:text="Resume"
+        android:id="@+id/resumeBtn"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/resumeBtn"
+        android:layout_centerHorizontal="true"
+        android:text="Restart"
+        android:id="@+id/restartGameBtn"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/restartGameBtn"
+        android:layout_centerHorizontal="true"
+        android:text="Exit"
+        android:id="@+id/exitGameBtn"/>
+
+
+</RelativeLayout>
