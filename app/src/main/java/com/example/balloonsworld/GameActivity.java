@@ -29,16 +29,25 @@ public class GameActivity extends AppCompatActivity {
     private AlertDialog menuDialog;
     private String currentUserName;
     private SharedPreferences sharedPreferences;
+    private int level;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
         this.initGameView();
-//        setContentView(gameView);
-        gameViewTutorial=new GameViewTutorial(this,(SensorManager)getSystemService(SENSOR_SERVICE));
-        setContentView(gameViewTutorial);
+
         currentUserName = getIntent().getStringExtra("player_name");
+        level = getIntent().getIntExtra("level",0);
+        if(level==0){
+            gameViewTutorial=new GameViewTutorial(this,(SensorManager)getSystemService(SENSOR_SERVICE));
+            setContentView(gameViewTutorial);
+        }
+        else{
+                    setContentView(gameView);
+        }
+
+
         this.timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -46,7 +55,13 @@ public class GameActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        gameViewTutorial.invalidate();
+
+                        if(level==0){
+                            gameViewTutorial.invalidate();
+                        }
+                        else{
+                            gameView.invalidate();
+                        }
                     }
                 });
             }
