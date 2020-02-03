@@ -28,6 +28,7 @@ public class GameView extends View {
     interface GameEventListener{
         void pauseGame();
         void resumeGame();
+        void endGame();
     }
     public void setListner(GameEventListener listener){
         this.listener=listener;
