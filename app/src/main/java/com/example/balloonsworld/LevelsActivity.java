@@ -1,6 +1,7 @@
 package com.example.balloonsworld;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +11,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LevelsActivity extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
+    int levelsToDisable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levels_layout);
+        sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
+        levelsToDisable = sharedPreferences.getInt("level",0);
         LevelListener levelListener = new LevelListener();
         Button backBtn = findViewById(R.id.backfromlevels);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +45,8 @@ public class LevelsActivity extends AppCompatActivity {
             button.setLayoutParams(layoutParams);
             button.setText(i+"");
             button.setOnClickListener(levelListener);
+            if(i>levelsToDisable)
+                button.setEnabled(false);
             btnsLayout1.addView(button);
         }
 
@@ -51,6 +58,8 @@ public class LevelsActivity extends AppCompatActivity {
             button.setLayoutParams(layoutParams);
             button.setText(i+"");
             button.setOnClickListener(levelListener);
+            if(i>levelsToDisable)
+                button.setEnabled(false);
             btnsLayout2.addView(button);
         }
 
@@ -62,6 +71,8 @@ public class LevelsActivity extends AppCompatActivity {
             button.setLayoutParams(layoutParams);
             button.setText(i+"");
             button.setOnClickListener(levelListener);
+            if(i>levelsToDisable)
+                button.setEnabled(false);
             btnsLayout3.addView(button);
         }
 
@@ -73,6 +84,8 @@ public class LevelsActivity extends AppCompatActivity {
             button.setLayoutParams(layoutParams);
             button.setText(i+"");
             button.setOnClickListener(levelListener);
+            if(i>levelsToDisable)
+                button.setEnabled(false);
             btnsLayout4.addView(button);
         }
     }
