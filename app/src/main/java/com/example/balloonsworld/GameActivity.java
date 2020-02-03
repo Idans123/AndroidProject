@@ -23,6 +23,7 @@ public class GameActivity extends AppCompatActivity {
     private final static long interval=30;
     private Timer timer;
     private AlertDialog menuDialog;
+    private String currentUserName;
     private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class GameActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
         this.initGameView();
         setContentView(gameView);
-
+        currentUserName = getIntent().getStringExtra("player_name");
         this.timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -92,7 +93,7 @@ public class GameActivity extends AppCompatActivity {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
 
                 View endGameDialog=getLayoutInflater().inflate(R.layout.end_game_menu,null);
-                isInTop10(score,"Omer");
+                isInTop10(score);
 
                 menuDialog= builder.setView(endGameDialog).show();
             }
@@ -127,7 +128,7 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-    private int isInTop10(int score,String userName) {
+    private int isInTop10(int score) {
         ArrayList<Integer> highScores = new ArrayList<Integer>();
         ArrayList<String> userNames = new ArrayList<String>();
         int indexInHighScore = 0;
@@ -146,10 +147,13 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
+        if(highScores.size()==0){
+            indexInHighScore=1;
+        }
 
         if(indexInHighScore!=0){
             highScores.add(indexInHighScore-1,score);
-            userNames.add(indexInHighScore-1,userName);
+            userNames.add(indexInHighScore-1,currentUserName);
 
             for(int i=1;i<=highScores.size();i++){
                 editor.putString("player_name" + i,userNames.get(i-1));
