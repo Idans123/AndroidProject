@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Balloons World</string>
+    <string name="playerTV">Player:</string>
+    <string name="playernameET">Enter your name</string>
+    <string name="acceptBtn">Accept</string>
+    <string name="helloTV">Hello</string>
+    <string name="startBtn">Start</string>
+    <string name="exitBtn">Exit</string>
+    <string name="high_scoresBtn">High scores</string>
 </resources>
