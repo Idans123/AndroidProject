@@ -35,6 +35,12 @@ public class ConsumablesFactory {
             return new Shield(minBallonX,maxBallonX, BitmapFactory.decodeResource(context.getResources(),R.drawable.shield),level);
         }
     }
+
+    public GameConsumable generateConsumableForTutorial(int minBallonX, int maxBallonX){
+        ArrayList<Bitmap> arr = getBronzeBitmapArr();
+        return new BronzeCoin(minBallonX,maxBallonX,arr,5);
+    }
+
     private ArrayList<Bitmap> getBronzeBitmapArr(){
         ArrayList<Bitmap> coins = new ArrayList<>();
         coins.add(BitmapFactory.decodeResource(context.getResources(), R.drawable.bronze));

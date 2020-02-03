@@ -17,12 +17,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/endMenuTitleTV"
         android:textSize="20sp"
-        android:id="@+id/highScoreTV"/>
+        android:id="@+id/endGameHighScoreTv"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/highScoreTV"
+        android:layout_below="@id/endGameHighScoreTv"
         android:textSize="20sp"
         android:id="@+id/userScoreTV"/>
 

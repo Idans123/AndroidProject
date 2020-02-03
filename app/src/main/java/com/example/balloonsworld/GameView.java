@@ -10,6 +10,10 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,8 +27,11 @@ import com.example.balloonsworld.gameobjects.ObstaclesFactory;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameView extends View {
+public class GameView extends View implements SensorEventListener {
     private GameEventListener listener;
+
+
+
     interface GameEventListener{
         void pauseGame();
         void resumeGame();
@@ -34,12 +41,17 @@ public class GameView extends View {
         this.listener=listener;
     }
 
+    SensorManager manager;
+    Sensor sensor;
+
     private int level;
     private LevelManager levelObj;
     private boolean showingLevel=true;
     Random rand = new Random();
 
     private Bitmap ballon;
+    private float speed=0;
+    private float acc=0;
 
     //Background-params
     private Bitmap background;
@@ -75,8 +87,13 @@ public class GameView extends View {
     private ConsumablesFactory consumablesFactory;
     private ObstaclesFactory obstaclesFactory;
 
-    public GameView(Context context,int level) {
+    public GameView(Context context,int level,SensorManager manager) {
         super(context);
+        this.manager=manager;
+        sensor=manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if(sensor!=null){
+            this.manager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_GAME);
+        }
         initBackground();
         initBitmaps();
         initPaints();
@@ -158,11 +175,18 @@ public class GameView extends View {
                 genarateObstacle(minBallonX,maxBallonX);
             }
         }
+
+        balloonX+=(int)speed;
+
         if(balloonX<minBallonX){
             balloonX=minBallonX;
+            speed=0;
+            acc=0;
         }
         if(balloonX >maxBallonX){
             balloonX=maxBallonX;
+            speed=0;
+            acc=0;
         }
         if(shield){
             drawShield(canvas);
@@ -227,6 +251,23 @@ public class GameView extends View {
     private void drawShield(Canvas canvas) {
         canvas.drawCircle((int)(balloonX+ballon.getWidth()/2),(int)(canvasHeight - ballon.getHeight()*2 + ballon.getHeight()/2),ballon.getHeight()/2+10,shieldPaint);
     }
+
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        acc=event.values[0];
+        System.out.println(acc);
+        speed-=acc/6;
+
+        if(speed>20) speed=20;
+        if(speed<-20) speed=-20;
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

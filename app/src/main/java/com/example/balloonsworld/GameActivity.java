@@ -2,10 +2,12 @@ package com.example.balloonsworld;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -19,6 +21,7 @@ import java.util.TimerTask;
 public class GameActivity extends AppCompatActivity {
 
     private GameView gameView;
+    private GameViewTutorial gameViewTutorial;
     private Handler  handler= new Handler();
     private final static long interval=30;
     private Timer timer;
@@ -30,7 +33,9 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
         this.initGameView();
-        setContentView(gameView);
+//        setContentView(gameView);
+        gameViewTutorial=new GameViewTutorial(this,(SensorManager)getSystemService(SENSOR_SERVICE));
+        setContentView(gameViewTutorial);
         currentUserName = getIntent().getStringExtra("player_name");
         this.timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -39,14 +44,16 @@ public class GameActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        gameView.invalidate();
+                        gameViewTutorial.invalidate();
                     }
                 });
             }
         },0,interval);
     }
+
+
     public void initGameView(){
-        gameView = new GameView(this,5);
+        gameView = new GameView(this,5,(SensorManager)getSystemService(SENSOR_SERVICE));
         gameView.setListner(new GameView.GameEventListener() {
             @Override
             public void pauseGame() {
@@ -93,7 +100,35 @@ public class GameActivity extends AppCompatActivity {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
 
                 View endGameDialog=getLayoutInflater().inflate(R.layout.end_game_menu,null);
-                isInTop10(score);
+
+                final TextView endGameHighScoreTv=endGameDialog.findViewById(R.id.endGameHighScoreTv);
+                final TextView userScoreTV=endGameDialog.findViewById(R.id.userScoreTV);
+                final Button tryAgainBtn=endGameDialog.findViewById(R.id.tryAgainBtn);
+                final Button returnToMenuBtn=endGameDialog.findViewById(R.id.returnToMenuBtn);
+
+                int newHighScore=isInTop10(score);
+                if(newHighScore!=0){
+                    endGameHighScoreTv.setText("New High Score!!!\nYou entered the leadboard at position "+newHighScore);
+                }
+
+                userScoreTV.setText("Your score is: "+score);
+
+                tryAgainBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        initGameView();
+                        setContentView(gameView);
+                        resumeGame();
+                        menuDialog.dismiss();
+                    }
+                });
+
+                returnToMenuBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        exitGame();
+                    }
+                });
 
                 menuDialog= builder.setView(endGameDialog).show();
             }
@@ -132,6 +167,7 @@ public class GameActivity extends AppCompatActivity {
         ArrayList<Integer> highScores = new ArrayList<Integer>();
         ArrayList<String> userNames = new ArrayList<String>();
         int indexInHighScore = 0;
+        boolean scoreIsAddedDefualt=false;
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
 //        editor.putString("player_name_last_user",playerNameET.getText().toString());
@@ -142,7 +178,7 @@ public class GameActivity extends AppCompatActivity {
                 int currScore = Integer.parseInt(sharedPreferences.getString("player_score" + i, ""));
                 highScores.add(currScore);
                 userNames.add(sharedPreferences.getString("player_name" + i,""));
-                if (score > currScore&&indexInHighScore!=0) {
+                if (score > currScore&&indexInHighScore==0) {
                     indexInHighScore = i ;
                 }
             }
@@ -150,6 +186,14 @@ public class GameActivity extends AppCompatActivity {
         if(highScores.size()==0){
             indexInHighScore=1;
         }
+
+        if(highScores.size()<10&&score!=0&&indexInHighScore==0){
+            highScores.add(score);
+            userNames.add(currentUserName);
+            scoreIsAddedDefualt=true;
+        }
+
+
 
         if(indexInHighScore!=0){
             highScores.add(indexInHighScore-1,score);
@@ -161,6 +205,10 @@ public class GameActivity extends AppCompatActivity {
             }
             editor.commit();
 
+        }
+
+        if(scoreIsAddedDefualt){
+            indexInHighScore=highScores.size();
         }
 
         return indexInHighScore;
