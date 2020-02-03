@@ -7,17 +7,22 @@
         android:layout_height="wrap_content"
         android:id="@+id/index_high_score_tv"
         android:textSize="20sp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:textStyle="bold"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:id="@+id/name_high_score_tv"
         android:textSize="20sp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:textStyle="bold"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/points_high_score_tv"
         android:textSize="20sp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:textStyle="bold"
+        />
 </LinearLayout>

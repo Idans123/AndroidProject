@@ -22,11 +22,26 @@ public class HighScoresActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
         ListView listView = findViewById(R.id.high_scores_list);
         stomList = new ArrayList<HashMap<String, Object>>();
+//        setSPMockData();
         getUsersFromSP();
         String [] from = {"index","name","points"};
         int [] ids = {R.id.index_high_score_tv, R.id.name_high_score_tv, R.id.points_high_score_tv};
         SimpleAdapter simpleAdapter = new SimpleAdapter(this,stomList,R.layout.high_score_cell,from,ids);
         listView.setAdapter(simpleAdapter);
+    }
+    private void setSPMockData(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("player_name1","itzik");
+        editor.putString("player_score1","300");
+        editor.putString("player_name2","moshe");
+        editor.putString("player_score2","200");
+        editor.putString("player_name3","david");
+        editor.putString("player_score3","100");
+        editor.putString("player_name4","avner");
+        editor.putString("player_score4","50");
+        editor.putString("player_name5","yosi");
+        editor.putString("player_score5","10");
+        editor.commit();
     }
     private void getUsersFromSP(){
         HashMap<String,Object> stringToObjectMap = new HashMap<String, Object>();
