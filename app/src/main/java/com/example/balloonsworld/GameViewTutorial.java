@@ -115,6 +115,9 @@ public class GameViewTutorial extends View implements SensorEventListener {
                     else if(this.tutorialStage==5){
                         this.coin=consumablesFactory.generateConsumableForTutorial(minBallonX,maxBallonX);
                     }
+                    else if(this.tutorialStage==6){
+                        
+                    }
 
                 }
                 else{
