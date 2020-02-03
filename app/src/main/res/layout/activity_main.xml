@@ -40,27 +40,16 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonsRL"
+        android:id="@+id/AcceptRl"
         android:layout_below="@+id/usernameRL"
         android:layout_centerInParent="true"
         android:layout_marginTop="50dp">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/startBtn"
-            android:text="Start"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/exitBtn"
-            android:layout_below="@+id/startBtn"
-            android:text="Exit"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/highScoresBtn"
-            android:layout_below="@+id/exitBtn"
-            android:text="High scores"/>
+            android:id="@+id/acceptBtn"
+            android:text="Accept"/>
+
 
     </RelativeLayout>
 
