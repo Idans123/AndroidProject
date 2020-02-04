@@ -2,8 +2,10 @@ package com.example.balloonsworld;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -40,52 +42,64 @@ public class LevelsActivity extends AppCompatActivity {
         LinearLayout btnsLayout1 = findViewById(R.id.levelsLL1);
         for(int i=1;i<=5;i++){
             Button button = new Button(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(120,120);
-            layoutParams.setMarginEnd(20);
-            button.setLayoutParams(layoutParams);
+            LinearLayout.LayoutParams layoutParms=new LinearLayout.LayoutParams((int) (50*getResources().getDisplayMetrics().density), (int) (50*getResources().getDisplayMetrics().density));
+            layoutParms.setMarginEnd((int) (50 / Resources.getSystem().getDisplayMetrics().density));
+            button.setLayoutParams(layoutParms);
             button.setText(i+"");
             button.setOnClickListener(levelListener);
-            if(i>levelsToDisable)
+            button.setBackground(getResources().getDrawable(R.drawable.green_btn));
+            if(i>levelsToDisable) {
                 button.setEnabled(false);
+                button.setBackground(getResources().getDrawable(R.drawable.red_btn));
+            }
             btnsLayout1.addView(button);
         }
 
         LinearLayout btnsLayout2 = findViewById(R.id.levelsLL2);
         for(int i=6;i<=10;i++){
             Button button = new Button(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(120,120);
-            layoutParams.setMarginEnd(20);
-            button.setLayoutParams(layoutParams);
+            LinearLayout.LayoutParams layoutParms=new LinearLayout.LayoutParams((int) (50*getResources().getDisplayMetrics().density), (int) (50*getResources().getDisplayMetrics().density));
+            layoutParms.setMarginEnd((int) (50 / Resources.getSystem().getDisplayMetrics().density));
+            button.setLayoutParams(layoutParms);
             button.setText(i+"");
             button.setOnClickListener(levelListener);
-            if(i>levelsToDisable)
+            button.setBackground(getResources().getDrawable(R.drawable.green_btn));
+            if(i>levelsToDisable) {
                 button.setEnabled(false);
+                button.setBackground(getResources().getDrawable(R.drawable.red_btn));
+            }
             btnsLayout2.addView(button);
         }
 
         LinearLayout btnsLayout3 = findViewById(R.id.levelsLL3);
         for(int i=11;i<=15;i++){
             Button button = new Button(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(120,120);
-            layoutParams.setMarginEnd(20);
-            button.setLayoutParams(layoutParams);
+            LinearLayout.LayoutParams layoutParms=new LinearLayout.LayoutParams((int) (50*getResources().getDisplayMetrics().density), (int) (50*getResources().getDisplayMetrics().density));
+            layoutParms.setMarginEnd((int) (50 / Resources.getSystem().getDisplayMetrics().density));
+            button.setLayoutParams(layoutParms);
             button.setText(i+"");
             button.setOnClickListener(levelListener);
-            if(i>levelsToDisable)
+            button.setBackground(getResources().getDrawable(R.drawable.green_btn));
+            if(i>levelsToDisable) {
                 button.setEnabled(false);
+                button.setBackground(getResources().getDrawable(R.drawable.red_btn));
+            }
             btnsLayout3.addView(button);
         }
 
         LinearLayout btnsLayout4 = findViewById(R.id.levelsLL4);
         for(int i=16;i<=20;i++){
             Button button = new Button(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(120,120);
-            layoutParams.setMarginEnd(20);
-            button.setLayoutParams(layoutParams);
+            LinearLayout.LayoutParams layoutParms=new LinearLayout.LayoutParams((int) (50*getResources().getDisplayMetrics().density), (int) (50*getResources().getDisplayMetrics().density));
+            layoutParms.setMarginEnd((int) (50 / Resources.getSystem().getDisplayMetrics().density));
+            button.setLayoutParams(layoutParms);
             button.setText(i+"");
             button.setOnClickListener(levelListener);
-            if(i>levelsToDisable)
+            button.setBackground(getResources().getDrawable(R.drawable.green_btn));
+            if(i>levelsToDisable) {
                 button.setEnabled(false);
+                button.setBackground(getResources().getDrawable(R.drawable.red_btn));
+            }
             btnsLayout4.addView(button);
         }
     }
