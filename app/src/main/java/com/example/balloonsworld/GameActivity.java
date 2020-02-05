@@ -38,8 +38,8 @@ public class GameActivity extends AppCompatActivity {
 
 
         currentUserName = getIntent().getStringExtra("player_name");
-        level = Integer.parseInt(getIntent().getStringExtra("level"));
-        if(level==0){
+        this.level = getIntent().getIntExtra("level",0);
+        if(this.level==0){
             initGameViewTutorial();
             setContentView(gameViewTutorial);
         }
