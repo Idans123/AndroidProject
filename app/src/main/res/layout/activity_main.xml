@@ -51,7 +51,8 @@
             android:id="@+id/acceptBtn"
             android:text="@string/acceptBtn"
             android:background="@drawable/green_btn"
-            android:alpha="0.9"/>
+            android:alpha="0.9"
+            android:textAllCaps="false"/>
 
 
     </RelativeLayout>
