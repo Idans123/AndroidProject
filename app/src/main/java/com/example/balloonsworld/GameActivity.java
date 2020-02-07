@@ -83,12 +83,10 @@ public class GameActivity extends AppCompatActivity {
             public void endGame() {
                 timer.cancel();
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-
                 editor.putInt("level",1);
-
                 editor.commit();
+                setResult(RESULT_OK,null);
                 finish();
-
             }
         });
     }

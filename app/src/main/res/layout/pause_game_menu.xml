@@ -3,16 +3,20 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
     <ImageView
-        style="@style/background_pause_game"/>
+        style="@style/background_pause_game"
+        android:layout_width="match_parent"
+        android:layout_height="273dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Game paused"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:id="@+id/pauseMenuTitleTV"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"/>
 
     <Button
         android:layout_width="wrap_content"
