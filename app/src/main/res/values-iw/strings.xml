@@ -12,4 +12,7 @@
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="exit">יציאה</string>
+    <string name="levels">שלבים</string>
+    <string name="back">חזור</string>
+    <string name="tutorial">מדריך</string>
 </resources>

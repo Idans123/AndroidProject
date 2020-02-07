@@ -28,8 +28,9 @@
         android:layout_below="@+id/high_scores_list"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:text="back"
+        android:text="@string/back"
         android:background="@drawable/red_btn"
         android:alpha="0.9"
-        android:id="@+id/backfromhighscore"/>
+        android:id="@+id/backfromhighscore"
+        android:textAllCaps="false"/>
 </RelativeLayout>
