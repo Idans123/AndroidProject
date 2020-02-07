@@ -108,7 +108,7 @@ public class LevelsActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(LevelsActivity.this, GameActivity.class);
             intent.putExtra("player_name",getIntent().getStringExtra("player_name"));
-            intent.putExtra("level",((Button)v).getText().toString());
+            intent.putExtra("level",Integer.parseInt(((Button)v).getText().toString()));
             startActivity(intent);
         }
     }
