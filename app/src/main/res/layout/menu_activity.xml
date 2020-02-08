@@ -28,7 +28,8 @@
             android:alpha="0.9"
             android:padding="10dp"
             android:textStyle="bold"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:fontFamily="@font/myfont"/>
         <Button
             android:layout_width="100dp"
             android:layout_height="70dp"
@@ -40,7 +41,8 @@
             android:padding="10dp"
             android:layout_marginTop="40dp"
             android:textStyle="bold"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:fontFamily="@font/myfont"/>
         <Button
             android:layout_width="100dp"
             android:layout_height="70dp"
@@ -52,7 +54,8 @@
             android:padding="10dp"
             android:layout_marginTop="40dp"
             android:textStyle="bold"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:fontFamily="@font/myfont"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"

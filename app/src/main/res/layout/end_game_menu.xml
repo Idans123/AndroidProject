@@ -16,7 +16,8 @@
         android:textSize="40sp"
         android:id="@+id/endMenuTitleTV"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/myfont"/>
 
     <TextView
         android:layout_width="match_parent"
