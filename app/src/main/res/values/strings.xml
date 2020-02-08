@@ -14,4 +14,7 @@
     <string name="levels">Levels</string>
     <string name="back">Back</string>
     <string name="tutorial">Tutorial</string>
+    <string name="game_over">Game over!</string>
+    <string name="try_again">Try again</string>
+    <string name="return_to_menu">Return to menu</string>
 </resources>

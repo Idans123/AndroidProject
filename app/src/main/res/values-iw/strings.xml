@@ -15,4 +15,7 @@
     <string name="levels">שלבים</string>
     <string name="back">חזור</string>
     <string name="tutorial">מדריך</string>
+    <string name="game_over">המשחק נגמר!</string>
+    <string name="try_again">נסה שוב</string>
+    <string name="return_to_menu">חזור לתפריט</string>
 </resources>

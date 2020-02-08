@@ -4,13 +4,19 @@
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <ImageView
+        style="@style/background_end_game"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Game over!!!"
+        android:text="@string/game_over"
         android:gravity="center"
         android:textSize="40sp"
-        android:id="@+id/endMenuTitleTV"/>
+        android:id="@+id/endMenuTitleTV"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -31,16 +37,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/userScoreTV"
         android:layout_centerHorizontal="true"
-        android:text="Try again"
-        android:id="@+id/tryAgainBtn"/>
+        android:text="@string/try_again"
+        android:textAllCaps="false"
+        android:background="@drawable/green_btn"
+        android:id="@+id/tryAgainBtn"
+        android:layout_marginTop="20dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tryAgainBtn"
         android:layout_centerHorizontal="true"
-        android:text="Return to menu"
+        android:text="@string/return_to_menu"
         android:id="@+id/returnToMenuBtn"
+        android:background="@drawable/yellow_btn"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:padding="10dp"
         />
 
 </RelativeLayout>
