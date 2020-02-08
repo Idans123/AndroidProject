@@ -41,6 +41,7 @@
         android:background="@drawable/yellow_btn"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/myfont"
+        android:textAllCaps="false"
         />
 
     <Button
@@ -52,7 +53,8 @@
         android:id="@+id/exitGameBtn"
         android:background="@drawable/red_btn"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/myfont"/>
+        android:fontFamily="@font/myfont"
+        android:textAllCaps="false"/>
 
 
 </RelativeLayout>
