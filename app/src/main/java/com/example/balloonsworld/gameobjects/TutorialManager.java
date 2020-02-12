@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
+import com.example.balloonsworld.R;
+
 public class TutorialManager implements IGameObjects {
     Context context;
     private int tutorialY;
@@ -44,7 +46,7 @@ public class TutorialManager implements IGameObjects {
         }
 
         if(tutorialStage==0){
-            canvas.drawText("Welcome to ballons world",canvas.getWidth()/8,this.tutorialY,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.welcome),canvas.getWidth()/8,this.tutorialY,this.paint);
         }
         else if(tutorialStage==1){
             canvas.drawText("The game uses accelerometer",canvas.getWidth()/10,this.tutorialY,this.paint);
