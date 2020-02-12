@@ -138,6 +138,11 @@ public class GameActivity extends AppCompatActivity {
             public void endGame(int score,int level) {
                 timer.cancel();
                 final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
+                editor.putInt("level",level);
+                editor.commit();
 
                 View endGameDialog=getLayoutInflater().inflate(R.layout.end_game_menu,null);
 
@@ -174,6 +179,7 @@ public class GameActivity extends AppCompatActivity {
             }
 
             public void exitGame(){
+                setResult(RESULT_OK,null);
                 finish();
             }
 
