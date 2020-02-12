@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:id="@+id/levelsTV"
-        android:fontFamily="@font/myfont"/>
+        android:fontFamily="casual"/>
     <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -76,8 +76,7 @@
         android:background="@drawable/red_btn"
         android:alpha="0.9"
         android:id="@+id/backfromlevels"
-        android:textAllCaps="false"
-        android:fontFamily="@font/myfont"/>
+        android:textAllCaps="false"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,7 +89,6 @@
         android:background="@drawable/yellow_btn"
         android:alpha="0.9"
         android:id="@+id/tutorialBtn"
-        android:fontFamily="@font/myfont"
         />
 
 </RelativeLayout>
