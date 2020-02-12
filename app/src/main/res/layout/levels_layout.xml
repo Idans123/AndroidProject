@@ -15,7 +15,9 @@
         android:id="@+id/levelsTV"
         android:fontFamily="casual"/>
     <RelativeLayout
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_height="50dp"
         android:id="@+id/levelsRL1"
         android:layout_below="@+id/levelsTV"
@@ -28,7 +30,9 @@
         android:orientation="horizontal"/>
     </RelativeLayout>
     <RelativeLayout
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_height="50dp"
         android:id="@+id/levelsRL2"
         android:layout_below="@+id/levelsRL1"
@@ -41,7 +45,9 @@
             android:orientation="horizontal"/>
     </RelativeLayout>
     <RelativeLayout
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_height="50dp"
         android:id="@+id/levelsRL3"
         android:layout_below="@+id/levelsRL2"
@@ -54,7 +60,9 @@
             android:orientation="horizontal"/>
     </RelativeLayout>
     <RelativeLayout
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_height="50dp"
         android:id="@+id/levelsRL4"
         android:layout_below="@+id/levelsRL3"
@@ -66,29 +74,33 @@
             android:id="@+id/levelsLL4"
             android:orientation="horizontal"/>
     </RelativeLayout>
-    <Button
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/levelsRL4"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:text="@string/back"
-        android:background="@drawable/red_btn"
-        android:alpha="0.9"
-        android:id="@+id/backfromlevels"
-        android:textAllCaps="false"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/backfromlevels"
-        android:layout_below="@+id/levelsRL4"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="150dp"
-        android:text="@string/tutorial"
-        android:textAllCaps="false"
-        android:background="@drawable/yellow_btn"
-        android:alpha="0.9"
-        android:id="@+id/tutorialBtn"
-        />
+        android:layout_centerInParent="true">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:background="@drawable/red_btn"
+            android:alpha="0.9"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/backfromlevels"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/backfromlevels"
+            android:text="@string/tutorial"
+            android:textAllCaps="false"
+            android:background="@drawable/yellow_btn"
+            android:alpha="0.9"
+            android:id="@+id/tutorialBtn"
+            />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>
