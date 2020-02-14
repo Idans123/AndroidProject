@@ -74,6 +74,43 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void pauseGame() {
+                timer.cancel();
+                final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+
+                View pasueDialog=getLayoutInflater().inflate(R.layout.pause_game_menu,null);
+
+                final Button resumeBtn=pasueDialog.findViewById(R.id.resumeBtn);
+                final Button restartBtn=pasueDialog.findViewById(R.id.restartGameBtn);
+                final Button exitBtn=pasueDialog.findViewById(R.id.exitGameBtn);
+
+                resumeBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        resumeGame();
+                        menuDialog.dismiss();
+
+                    }
+                });
+
+                restartBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        initGameViewTutorial();
+                        setContentView(gameViewTutorial);
+                        resumeGame();
+                        menuDialog.dismiss();
+                    }
+                });
+                exitBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        exitGame();
+                    }
+                });
+
+                menuDialog= builder.setView(pasueDialog).show();
+                menuDialog.setCancelable(false);
+                menuDialog.setCanceledOnTouchOutside(false);
 
             }
 
@@ -81,12 +118,70 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void endGame() {
+
                 timer.cancel();
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+
+                View endTutorialDialog=getLayoutInflater().inflate(R.layout.turtorial__end,null);
+
+                final Button tryAgainBtn=endTutorialDialog.findViewById(R.id.tryAgainBtn);
+                final Button returnToMenuBtn=endTutorialDialog.findViewById(R.id.returnToMenuBtn);
+
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("level",1);
-                editor.commit();
+                int userLevel=sharedPreferences.getInt("level",0);
+                if(userLevel==0){
+                    editor.putInt("level",1);
+                    editor.commit();
+                }
+
+                tryAgainBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        initGameViewTutorial();
+                        setContentView(gameViewTutorial);
+                        resumeGame();
+                        menuDialog.dismiss();
+
+                    }
+                });
+                returnToMenuBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setResult(RESULT_OK,null);
+                        finish();
+
+                    }
+                });
+
+                menuDialog= builder.setView(endTutorialDialog).show();
+                menuDialog.setCancelable(false);
+                menuDialog.setCanceledOnTouchOutside(false);
+            }
+            public void exitGame(){
                 setResult(RESULT_OK,null);
                 finish();
+            }
+
+            public void restartGame(){
+
+            }
+
+
+            public void resumeGame() {
+
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                gameViewTutorial.invalidate();
+                            }
+                        });
+                    }
+                },0,interval);
             }
         });
     }
@@ -131,7 +226,11 @@ public class GameActivity extends AppCompatActivity {
                     }
                 });
 
+
+
                 menuDialog= builder.setView(pasueDialog).show();
+                menuDialog.setCancelable(false);
+                menuDialog.setCanceledOnTouchOutside(false);
             }
 
             @Override
@@ -140,9 +239,12 @@ public class GameActivity extends AppCompatActivity {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                int userLevel=sharedPreferences.getInt("level",0);
+                if(userLevel<level){
+                    editor.putInt("level",level);
+                    editor.commit();
+                }
 
-                editor.putInt("level",level);
-                editor.commit();
 
                 View endGameDialog=getLayoutInflater().inflate(R.layout.end_game_menu,null);
 

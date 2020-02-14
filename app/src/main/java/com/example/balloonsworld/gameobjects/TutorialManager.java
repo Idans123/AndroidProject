@@ -17,8 +17,8 @@ public class TutorialManager implements IGameObjects {
         this.context=context;
         this.tutorialY = 0;
         paint=new Paint();
-        paint.setColor(Color.YELLOW);
-        paint.setTextSize(100);
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(75);
         paint.setTypeface(Typeface.DEFAULT_BOLD);
 
     }
@@ -63,8 +63,17 @@ public class TutorialManager implements IGameObjects {
             canvas.drawText("Now to the left",canvas.getWidth()/10,this.tutorialY+100,this.paint);
         }
         else if(tutorialStage==5){
+
+            
             canvas.drawText("Your doing great!!!",canvas.getWidth()/10,this.tutorialY,this.paint);
             canvas.drawText("Now catch the coin",canvas.getWidth()/10,this.tutorialY+100,this.paint);
+        }
+        else if(tutorialStage==6){
+
+
+            canvas.drawText("Very good!!!",canvas.getWidth()/10,this.tutorialY,this.paint);
+            canvas.drawText("Now for the finel drill",canvas.getWidth()/10,this.tutorialY+100,this.paint);
+            canvas.drawText("Avoid the following obstacle ",canvas.getWidth()/10,this.tutorialY+200,this.paint);
         }
 
 
