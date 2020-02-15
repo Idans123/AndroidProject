@@ -1,5 +1,6 @@
 package com.example.balloonsworld;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -7,10 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 public class LevelsActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -111,6 +116,13 @@ public class LevelsActivity extends AppCompatActivity {
                 button.setBackground(getResources().getDrawable(R.drawable.red_btn));
             }
             btnsLayout4.addView(button);
+        }
+        if(sharedPreferences.getInt("level",0)<1){
+            YoYo.with(Techniques.BounceInUp).duration(2000).repeat(YoYo.INFINITE).repeatMode(ObjectAnimator.REVERSE).playOn(findViewById(R.id.arrowIV));
+        }
+        else{
+            ImageView arrow = findViewById(R.id.arrowIV);
+            arrow.setVisibility(View.INVISIBLE);
         }
     }
 
