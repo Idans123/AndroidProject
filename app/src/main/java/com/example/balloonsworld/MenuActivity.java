@@ -1,5 +1,6 @@
 package com.example.balloonsworld;
 
+import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.DialogInterface;
@@ -36,21 +37,62 @@ public class MenuActivity extends AppCompatActivity {
                 showExitDialog();
             }
         });
-        Button startBtn = findViewById(R.id.startBtn);
+        final Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, LevelsActivity.class);
-                intent.putExtra("player_name",getIntent().getStringExtra("player_name"));
-                startActivity(intent);
+                YoYo.with(Techniques.RotateIn).duration(2000).withListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        Intent intent = new Intent(MenuActivity.this, LevelsActivity.class);
+                        intent.putExtra("player_name",getIntent().getStringExtra("player_name"));
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                }).playOn(startBtn);
             }
         });
-        Button highScoresBtn = findViewById(R.id.highScoresBtn);
+        final Button highScoresBtn = findViewById(R.id.highScoresBtn);
         highScoresBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, HighScoresActivity.class);
-                startActivity(intent);
+                YoYo.with(Techniques.RotateIn).duration(2000).withListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        Intent intent = new Intent(MenuActivity.this, HighScoresActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                }).playOn(highScoresBtn);
+
             }
         });
     }
