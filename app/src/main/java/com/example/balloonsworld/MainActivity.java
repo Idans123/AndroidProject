@@ -1,10 +1,8 @@
 package com.example.balloonsworld;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,7 +15,6 @@ import android.widget.Toast;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -51,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        YoYo.with(Techniques.RollOut).duration(2000).delay(1000).repeat(YoYo.INFINITE).repeatMode(ObjectAnimator.REVERSE).playOn(findViewById(R.id.balloonsIV));
     }
 
     @Override

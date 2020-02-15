@@ -12,9 +12,10 @@
        android:textSize="40sp"
        android:textStyle="bold"
        android:layout_centerHorizontal="true"
-       android:layout_marginTop="20dp"
+       android:layout_marginTop="40dp"
        android:id="@+id/welcomeTV"
-       android:fontFamily="casual"/>
+       android:fontFamily="casual"
+       android:textColor="@color/colorPrimary"/>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +30,9 @@
             android:text="@string/playerTV"
             android:layout_centerVertical="true"
             android:textStyle="bold"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginEnd="10dp"/>
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,5 +59,20 @@
 
 
     </RelativeLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/AcceptRl"
+    android:layout_centerInParent="true"
+    android:layout_marginTop="30dp">
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/birthday_balloons"
+        android:scaleType="fitXY"
+        android:background="@null"
+        android:id="@+id/balloonsIV"/>
 
+</RelativeLayout>
 </RelativeLayout>
