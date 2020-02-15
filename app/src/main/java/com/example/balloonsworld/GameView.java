@@ -271,18 +271,11 @@ public class GameView extends View implements SensorEventListener {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         switch (event.getAction()){
-
             case MotionEvent.ACTION_DOWN:
-                System.out.println(event.getX());
-                System.out.println(event.getY());
                 if(event.getX()<120&&event.getY()<120){
                     listener.pauseGame();
                 }
-            case MotionEvent.ACTION_MOVE:
-                balloonX=(int)event.getX();
-//                System.out.println(event.getX()+","+event.getY());
         }
         return true;
     }
