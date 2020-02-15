@@ -35,8 +35,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
-
-
+        getSupportActionBar().hide();
         currentUserName = getIntent().getStringExtra("player_name");
         this.level = getIntent().getIntExtra("level",0);
         if(this.level==0){

@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         fa=this;
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
         playerNameET = findViewById(R.id.playerNameET);
         playerNameET.setText(sharedPreferences.getString("player_name_last_user",""));

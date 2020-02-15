@@ -20,6 +20,7 @@ public class LevelsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levels_layout);
+        getSupportActionBar().hide();
         LevelListener levelListener = new LevelListener();
         Button backBtn = findViewById(R.id.backfromlevels);
         backBtn.setOnClickListener(new View.OnClickListener() {

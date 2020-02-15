@@ -19,6 +19,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         MainActivity.fa.finish();
         setContentView(R.layout.menu_activity);
+        getSupportActionBar().hide();
         balloonAnimation();
         TextView helloUserTV = findViewById(R.id.helloUserTV);
         helloUserTV.setText(helloUserTV.getText().toString() +" "+getIntent().getStringExtra("player_name") );

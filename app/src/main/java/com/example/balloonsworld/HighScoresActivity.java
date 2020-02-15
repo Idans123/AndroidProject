@@ -21,6 +21,7 @@ public class HighScoresActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.high_scores_layout);
+        getSupportActionBar().hide();
         Button backBtn = findViewById(R.id.backfromhighscore);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
