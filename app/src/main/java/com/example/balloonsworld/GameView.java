@@ -151,8 +151,8 @@ public class GameView extends View implements SensorEventListener {
         }
 
         //update ballon position
-        int minBallonX=ballon.getWidth();
-        int maxBallonX = (int)(canvasWidth - (ballon.getWidth()*1.5));
+        int minBallonX=0;
+        int maxBallonX = (int)(canvasWidth - (ballon.getWidth()));
 
         if(showingLevel){
             if(currentConsumeableArr.size()==0&&obstaclesArr.size()==0){
@@ -169,10 +169,10 @@ public class GameView extends View implements SensorEventListener {
         }
         else{
             if(!dropItemType&&timeToDropAnother){
-                genarateConsumable(minBallonX,maxBallonX);
+                genarateConsumable(minBallonX,maxBallonX+ballon.getWidth());
             }
             else if(timeToDropAnother){
-                genarateObstacle(minBallonX,maxBallonX);
+                genarateObstacle(minBallonX,maxBallonX+ballon.getWidth());
             }
         }
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        style="@style/background_pause_game"
+        android:layout_width="match_parent"
+        android:layout_height="318dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Congratulations you finished the turtorial"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:id="@+id/endMenuTitleTV"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/endMenuTitleTV"
+        android:textSize="20sp"
+        android:id="@+id/endGameHighScoreTv"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/endGameHighScoreTv"
+        android:textSize="20sp"
+        android:id="@+id/userScoreTV"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userScoreTV"
+        android:layout_centerHorizontal="true"
+        android:text="@string/try_again"
+        android:textAllCaps="false"
+        android:background="@drawable/green_btn"
+        android:id="@+id/tryAgainBtn"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tryAgainBtn"
+        android:layout_centerHorizontal="true"
+        android:text="@string/return_to_menu"
+        android:id="@+id/returnToMenuBtn"
+        android:background="@drawable/yellow_btn"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        />
+
+</RelativeLayout>

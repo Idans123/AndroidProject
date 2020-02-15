@@ -15,10 +15,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.balloonsworld.gameobjects.ConsumablesFactory;
 import com.example.balloonsworld.gameobjects.GameConsumable;
+import com.example.balloonsworld.gameobjects.GameObstacle;
 import com.example.balloonsworld.gameobjects.ObstaclesFactory;
 import com.example.balloonsworld.gameobjects.TutorialManager;
 
@@ -72,6 +74,7 @@ public class GameViewTutorial extends View implements SensorEventListener {
 
 
     private GameConsumable coin=null;
+    private GameObstacle obstacle=null;
 
     private ConsumablesFactory consumablesFactory;
     private ObstaclesFactory obstaclesFactory;
@@ -116,7 +119,8 @@ public class GameViewTutorial extends View implements SensorEventListener {
                 this.tutorialManager.update();
                 if(this.tutorialManager.getObjectY()>canvasHeight+200&&
                         this.touchRight&&this.touchLeft&&
-                this.coin==null){
+                this.coin==null&&
+                this.obstacle==null){
                     this.tutorialStage=this.tutorialManager.nextTutorial();
                     if(this.tutorialStage==3){
                         this.touchRight=false;
@@ -128,6 +132,9 @@ public class GameViewTutorial extends View implements SensorEventListener {
                         this.coin=consumablesFactory.generateConsumableForTutorial(minBallonX,maxBallonX);
                     }
                     else if(this.tutorialStage==6){
+                        this.obstacle=obstaclesFactory.generateObstacleForTutorial(minBallonX,maxBallonX,ballon.getWidth());
+                    }
+                    else if(this.tutorialStage==7){
                         listener.endGame();
                     }
 
@@ -169,6 +176,19 @@ public class GameViewTutorial extends View implements SensorEventListener {
                 }
             }
 
+        }
+        if(this.obstacle!=null){
+            this.obstacle.update();
+            if(obstacle.hitCheker(canvasHeight,ballon,balloonX)){
+                this.obstacle=obstaclesFactory.generateObstacleForTutorial(minBallonX,maxBallonX,ballon.getWidth());
+            }
+            else{
+                this.obstacle.drawNow(canvas);
+                if(obstacle.getObjectY()>canvasHeight+100){
+                    this.obstacle=null;
+                }
+
+            }
         }
 
 
@@ -228,5 +248,19 @@ public class GameViewTutorial extends View implements SensorEventListener {
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        switch (event.getAction()){
+
+            case MotionEvent.ACTION_DOWN:
+                if(event.getX()<120&&event.getY()<120){
+                    listener.pauseGame();
+                }
+
+        }
+        return true;
     }
 }
