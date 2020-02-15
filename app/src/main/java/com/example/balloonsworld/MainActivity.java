@@ -1,6 +1,8 @@
 package com.example.balloonsworld;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
@@ -38,13 +40,33 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(playerNameET.getText().toString().length()<1){
-                    YoYo.with(Techniques.Tada).duration(1500).playOn(acceptBtn);
+                    YoYo.with(Techniques.Tada).duration(2000).delay(1000).playOn(acceptBtn);
                     Toast.makeText(MainActivity.this, "Please enter your name", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                    intent.putExtra("player_name",playerNameET.getText().toString());
-                    startActivity(intent);
+                    YoYo.with(Techniques.ZoomOutDown).duration(2000).withListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                            intent.putExtra("player_name",playerNameET.getText().toString());
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    }).playOn(acceptBtn);
                 }
             }
         });
