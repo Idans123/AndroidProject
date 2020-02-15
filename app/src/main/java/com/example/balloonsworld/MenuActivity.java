@@ -13,6 +13,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,9 @@ public class MenuActivity extends AppCompatActivity {
         balloonAnimation();
         TextView helloUserTV = findViewById(R.id.helloUserTV);
         helloUserTV.setText(helloUserTV.getText().toString() +" "+getIntent().getStringExtra("player_name") );
+
+        YoYo.with(Techniques.Shake).duration(5000).repeat(YoYo.INFINITE).repeatMode(ObjectAnimator.REVERSE).playOn(findViewById(R.id.helloUserTV));
+
         Button exitBtn = findViewById(R.id.exitBtn);
         exitBtn.setOnClickListener(new View.OnClickListener() {
             @Override

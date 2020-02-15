@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,27 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         sharedPreferences = getSharedPreferences("storage",MODE_PRIVATE);
         welcomeTV = findViewById(R.id.welcomeTV);
-        YoYo.with(Techniques.FlipInY).duration(2000).playOn(welcomeTV);
+        YoYo.with(Techniques.FlipInY).duration(1000).withListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                ImageView balloonsIV = findViewById(R.id.balloonsIV);
+                YoYo.with(Techniques.RollOut).duration(2000).repeat(YoYo.INFINITE).repeatMode(ObjectAnimator.REVERSE).playOn(balloonsIV);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        }).playOn(welcomeTV);
 
         playerNameET = findViewById(R.id.playerNameET);
         playerNameET.setText(sharedPreferences.getString("player_name_last_user",""));
@@ -41,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(playerNameET.getText().toString().length()<1){
                     YoYo.with(Techniques.Tada).duration(2000).delay(1000).playOn(acceptBtn);
-                    Toast.makeText(MainActivity.this, "Please enter your name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.enter_your_name), Toast.LENGTH_SHORT).show();
                 }
                 else{
                     YoYo.with(Techniques.ZoomOutDown).duration(2000).withListener(new Animator.AnimatorListener() {
@@ -70,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        YoYo.with(Techniques.RollOut).duration(2000).delay(1000).repeat(YoYo.INFINITE).repeatMode(ObjectAnimator.REVERSE).playOn(findViewById(R.id.balloonsIV));
     }
 
     @Override
