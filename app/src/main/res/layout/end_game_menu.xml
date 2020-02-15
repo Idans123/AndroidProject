@@ -7,7 +7,7 @@
     <ImageView
         style="@style/background_end_game"
         android:layout_width="match_parent"
-        android:layout_height="318dp" />
+        android:layout_height="370dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,21 +16,28 @@
         android:textSize="40sp"
         android:id="@+id/endMenuTitleTV"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textColor="@color/red"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/endMenuTitleTV"
         android:textSize="20sp"
-        android:id="@+id/endGameHighScoreTv"/>
+        android:layout_marginStart="15dp"
+        android:id="@+id/endGameHighScoreTv"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/red"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/endGameHighScoreTv"
         android:textSize="20sp"
-        android:id="@+id/userScoreTV"/>
+        android:id="@+id/userScoreTV"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/red"/>
 
     <Button
         android:layout_width="wrap_content"
