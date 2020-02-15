@@ -56,7 +56,7 @@ public class HighScoresActivity extends AppCompatActivity {
         HashMap<String,Object> stringToObjectMap = new HashMap<String, Object>();
         for(int i=1;i<=10;i++){
             if(sharedPreferences.contains("player_name"+i)&&sharedPreferences.contains("player_score"+i)){
-                stringToObjectMap.put("index",i+".");
+                stringToObjectMap.put("index",i);
                 stringToObjectMap.put("name",sharedPreferences.getString("player_name"+i,""));
                 stringToObjectMap.put("points",sharedPreferences.getString("player_score"+i,""));
                 stomList.add(stringToObjectMap);
