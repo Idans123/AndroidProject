@@ -22,4 +22,6 @@
     <string name="enter_your_name">אנא הכנס את שמך</string>
     <string name="game_paused">הפסקת משחק</string>
     <string name="high_scores">טבלת שיאים</string>
+    <string name="resume">המשך</string>
+    <string name="restart">התחל מחדש</string>
 </resources>
