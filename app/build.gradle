@@ -29,4 +29,7 @@ dependencies {
     implementation 'com.android.support:support-compat:25.1.1'
     implementation 'com.daimajia.easing:library:2.0@aar'
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
+    implementation 'nl.dionsegijn:konfetti:1.1.3'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61'
+
 }
