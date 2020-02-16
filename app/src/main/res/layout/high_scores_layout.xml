@@ -7,12 +7,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="High Scores"
+        android:text="@string/high_scores"
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/high_score_TV"/>
+        android:id="@+id/high_score_TV"
+        android:fontFamily="casual"
+        android:textColor="@color/colorPrimary"
+        />
     <ListView
         android:layout_width="250dp"
         android:layout_height="300dp"
