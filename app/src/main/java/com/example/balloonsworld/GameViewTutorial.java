@@ -112,8 +112,8 @@ public class GameViewTutorial extends View implements SensorEventListener {
         canvas.drawText("score: "+score,150,60,scorePaint); //TO DO - Localize "Score" to hebrew
 
         //update ballon position
-        int minBallonX=ballon.getWidth();
-        int maxBallonX = (int)(canvasWidth - (ballon.getWidth()*1.5));
+        int minBallonX=0;
+        int maxBallonX = (int)(canvasWidth - (ballon.getWidth()));
 
         if(nextTutorial){
                 this.tutorialManager.update();

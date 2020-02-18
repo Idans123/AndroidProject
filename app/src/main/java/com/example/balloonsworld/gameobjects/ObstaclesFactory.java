@@ -14,21 +14,27 @@ public class ObstaclesFactory {
 
     public GameObstacle generateObstacle(int minBallonX, int maxBallonX, int level,int ballonWidth){
         Random rand = new Random();
-        int randRes= rand.nextInt(20);
-
-
-
-        if(randRes<=4){
-            return new Wall(minBallonX,maxBallonX,level,ballonWidth);
+        int randRes;
+        if(level<=5){
+            randRes= rand.nextInt(5);
         }
-        else if(randRes<=9){
-            return new WallLeft(minBallonX,maxBallonX,level,ballonWidth);
+        else if(level<=10){
+            randRes= rand.nextInt(15);
         }
-        else if(randRes<=14){
+        else{
+            randRes= rand.nextInt(20);
+        }
+
+
+
+        if(randRes<=5){
             return new WallWithGap(minBallonX,maxBallonX,level,ballonWidth);
         }
-        else if(randRes<=0){
-            return new BigBall(minBallonX,maxBallonX,level);
+        else if(randRes<=10){
+            return new WallLeft(minBallonX,maxBallonX,level,ballonWidth);
+        }
+        else if(randRes<=15){
+            return new Wall(minBallonX,maxBallonX,level,ballonWidth);
         }
         else{
             return new WallZigZag(minBallonX,maxBallonX,level);

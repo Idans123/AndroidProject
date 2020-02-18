@@ -16,15 +16,11 @@ public class WallWithGap extends GameObstacle {
         this.gapRight=ballonWidth;
         if(this.getObjectX()<minBallonX+this.gapLeft){
             this.fixPosition(minBallonX+this.gapLeft);
-            Paint.setColor(Color.GREEN);
         }
         else if(this.getObjectX()>maxBallonX-this.gapRight){
             this.fixPosition(maxBallonX);
-            Paint.setColor(Color.GREEN);
         }
-        else{
-            Paint.setColor(Color.BLACK);
-        }
+        Paint.setColor(Color.BLACK);
 
         Paint.setAntiAlias(false);
     }

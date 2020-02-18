@@ -13,16 +13,11 @@ public class Wall extends GameObstacle {
         super(minBallonX, maxBallonX, speed);
         if(this.getObjectX()<minBallonX+(ballonWidth*1.5)){
             this.fixPosition((int)(minBallonX+(ballonWidth*1.5)));
-            Paint.setColor(Color.GREEN);
         }
         else if(this.getObjectX()>minBallonX+(maxBallonX-minBallonX)/2){
             this.fixPosition((int)(minBallonX+(ballonWidth*1.5)));
-            Paint.setColor(Color.GREEN);
         }
-        else{
-            Paint.setColor(Color.BLACK);
-        }
-//        Paint.setColor(Color.BLACK);
+        Paint.setColor(Color.BLACK);
         Paint.setAntiAlias(false);
 
     }

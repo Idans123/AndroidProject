@@ -169,7 +169,7 @@ public class GameView extends View implements SensorEventListener {
         }
         else{
             if(!dropItemType&&timeToDropAnother){
-                genarateConsumable(minBallonX,maxBallonX+ballon.getWidth());
+                genarateConsumable(minBallonX,maxBallonX+(ballon.getWidth()/2));
             }
             else if(timeToDropAnother){
                 genarateObstacle(minBallonX,maxBallonX+ballon.getWidth());

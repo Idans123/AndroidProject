@@ -17,22 +17,37 @@ public class ConsumablesFactory {
 
     public GameConsumable generateConsumable(int minBallonX, int maxBallonX, int level){
         Random rand = new Random();
-        int randRes= rand.nextInt(10);
+        int randRes;
+        if(level<=5){
+            randRes= rand.nextInt(10);
+        }
+        else if(level<=10){
+            randRes= rand.nextInt(15);
+        }
+        else if(level<=15){
+            randRes= rand.nextInt(18);
+        }
+        else{
+            randRes= rand.nextInt(20);
+        }
 
-        if(randRes<=3){
+        if(randRes<=10){
             ArrayList<Bitmap> arr = getBronzeBitmapArr();
             return new BronzeCoin(minBallonX,maxBallonX,arr,level);
         }
-        else if(randRes>3&&randRes<5){
+        else if(randRes<=15){
             ArrayList<Bitmap> arr = getSilverBitmapArr();
             return new SilverCoin(minBallonX,maxBallonX,arr,level);
+
         }
-        else if (randRes>5&&randRes<7){
-            ArrayList<Bitmap> arr = getGoldBitmapArr();
-            return new GoldCoin(minBallonX,maxBallonX,arr,level);
+        else if (randRes<=18){
+
+            return new Shield(minBallonX,maxBallonX, BitmapFactory.decodeResource(context.getResources(),R.drawable.shield),level);
+
         }
         else{
-            return new Shield(minBallonX,maxBallonX, BitmapFactory.decodeResource(context.getResources(),R.drawable.shield),level);
+            ArrayList<Bitmap> arr = getGoldBitmapArr();
+            return new GoldCoin(minBallonX,maxBallonX,arr,level);
         }
     }
 
