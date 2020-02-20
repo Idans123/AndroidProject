@@ -5,13 +5,21 @@
         <item>100</item>
         <item>150</item>
         <item>200</item>
-        <item>300</item>
-        <item>400</item>
-        <item>500</item>
-        <item>600</item>
+        <item>250</item>
+        <item>350</item>
+        <item>450</item>
+        <item>550</item>
         <item>700</item>
-        <item>800</item>
-        <item>900</item>
+        <item>850</item>
         <item>1000</item>
+        <item>1150</item>
+        <item>1300</item>
+        <item>1500</item>
+        <item>1700</item>
+        <item>1900</item>
+        <item>2100</item>
+        <item>2300</item>
+        <item>2500</item>
+        <item>3000</item>
     </string-array>
 </resources>
