@@ -49,29 +49,29 @@ public class TutorialManager implements IGameObjects {
             canvas.drawText(context.getResources().getString(R.string.welcome),canvas.getWidth()/8,this.tutorialY,this.paint);
         }
         else if(tutorialStage==1){
-            canvas.drawText("The game uses accelerometer",canvas.getWidth()/10,this.tutorialY,this.paint);
-            canvas.drawText("to control the ballon",canvas.getWidth()/10,this.tutorialY+100,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.uses_accelerometer),canvas.getWidth()/10,this.tutorialY,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.to_control),canvas.getWidth()/10,this.tutorialY+100,this.paint);
         }
         else if(tutorialStage==2){
-            canvas.drawText("Follow the next instructions",canvas.getWidth()/10,this.tutorialY,this.paint);
-            canvas.drawText("to finish the tutorial",canvas.getWidth()/10,this.tutorialY+100,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.follow_the_next),canvas.getWidth()/10,this.tutorialY,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.to_finish_tutorial),canvas.getWidth()/10,this.tutorialY+100,this.paint);
         }
         else if(tutorialStage==3){
-            canvas.drawText("Tilt your phone to the",canvas.getWidth()/10,this.tutorialY,this.paint);
-            canvas.drawText("right and touch the most right",canvas.getWidth()/10,this.tutorialY+100,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.tilt_your_phone),canvas.getWidth()/10,this.tutorialY,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.most_right),canvas.getWidth()/10,this.tutorialY+100,this.paint);
         }
         else if(tutorialStage==4){
-            canvas.drawText("Good job!!!",canvas.getWidth()/10,this.tutorialY,this.paint);
-            canvas.drawText("Now to the left",canvas.getWidth()/10,this.tutorialY+100,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.good_job),canvas.getWidth()/10,this.tutorialY,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.now_to_the_left),canvas.getWidth()/10,this.tutorialY+100,this.paint);
         }
         else if(tutorialStage==5){
-            canvas.drawText("Your doing great!!!",canvas.getWidth()/10,this.tutorialY,this.paint);
-            canvas.drawText("Now catch the coin",canvas.getWidth()/10,this.tutorialY+100,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.your_doing_great),canvas.getWidth()/10,this.tutorialY,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.now_catch),canvas.getWidth()/10,this.tutorialY+100,this.paint);
         }
         else if(tutorialStage==6){
-            canvas.drawText("Very good!!!",canvas.getWidth()/10,this.tutorialY,this.paint);
-            canvas.drawText("Now for the finel drill",canvas.getWidth()/10,this.tutorialY+100,this.paint);
-            canvas.drawText("Avoid the following obstacle ",canvas.getWidth()/10,this.tutorialY+200,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.excellent),canvas.getWidth()/10,this.tutorialY,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.final_drill),canvas.getWidth()/10,this.tutorialY+100,this.paint);
+            canvas.drawText(context.getResources().getString(R.string.avoid),canvas.getWidth()/10,this.tutorialY+200,this.paint);
         }
     }
 

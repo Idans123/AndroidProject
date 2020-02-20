@@ -23,4 +23,17 @@
     <string name="high_scores">High Scores</string>
     <string name="resume">Resume</string>
     <string name="restart">Restart</string>
+    <string name="uses_accelerometer">The game uses accelerometer</string>
+    <string name="to_control">to control the ballon</string>
+    <string name="follow_the_next">Follow the next instructions</string>
+    <string name="to_finish_tutorial">to finish the tutorial</string>
+    <string name="tilt_your_phone">Tilt your phone to the</string>
+    <string name="most_right">right and touch the most right</string>
+    <string name="good_job">Good job!</string>
+    <string name="now_to_the_left">Now to the left</string>
+    <string name="your_doing_great">Your doing great!</string>
+    <string name="now_catch">Now catch the coin</string>
+    <string name="excellent">Excellent!</string>
+    <string name="final_drill">And for the final drill</string>
+    <string name="avoid">Avoid the following obstacle</string>
 </resources>
