@@ -11,45 +11,33 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Congratulations you finished the turtorial"
+        android:text="@string/congratulations_you_finished_the_turtorial"
         android:gravity="center"
         android:textSize="30sp"
-        android:id="@+id/endMenuTitleTV"
+        android:id="@+id/endMenuTitleTutorialTV"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/endMenuTitleTV"
-        android:textSize="20sp"
-        android:id="@+id/endGameHighScoreTv"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/endGameHighScoreTv"
-        android:textSize="20sp"
-        android:id="@+id/userScoreTV"/>
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/userScoreTV"
+        android:layout_below="@id/endMenuTitleTutorialTV"
         android:layout_centerHorizontal="true"
         android:text="@string/try_again"
         android:textAllCaps="false"
         android:background="@drawable/green_btn"
-        android:id="@+id/tryAgainBtn"
+        android:id="@+id/tryAgainTutorialBtn"
         android:layout_marginTop="20dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tryAgainBtn"
+        android:layout_below="@id/tryAgainTutorialBtn"
         android:layout_centerHorizontal="true"
         android:text="@string/return_to_menu"
-        android:id="@+id/returnToMenuBtn"
+        android:id="@+id/returnToMenuTutorialBtn"
         android:background="@drawable/yellow_btn"
         android:layout_marginTop="20dp"
         android:textAllCaps="false"
