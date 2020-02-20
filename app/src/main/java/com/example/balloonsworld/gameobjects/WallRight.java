@@ -5,11 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-public class Wall extends GameObstacle {
+public class WallRight extends GameObstacle {
 
     private android.graphics.Paint Paint = new Paint();
 
-    public Wall(int minBallonX, int maxBallonX, int speed,int ballonWidth) {
+    public WallRight(int minBallonX, int maxBallonX, int speed, int ballonWidth) {
         super(minBallonX, maxBallonX, speed);
         if(this.getObjectX()<minBallonX+(ballonWidth*1.5)){
             this.fixPosition((int)(minBallonX+(ballonWidth*1.5)));
