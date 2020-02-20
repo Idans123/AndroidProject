@@ -41,7 +41,7 @@ public class MenuActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                YoYo.with(Techniques.RotateIn).duration(2000).withListener(new Animator.AnimatorListener() {
+                YoYo.with(Techniques.RotateIn).duration(1300).withListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -70,7 +70,7 @@ public class MenuActivity extends AppCompatActivity {
         highScoresBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                YoYo.with(Techniques.RotateIn).duration(2000).withListener(new Animator.AnimatorListener() {
+                YoYo.with(Techniques.RotateIn).duration(1300).withListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
