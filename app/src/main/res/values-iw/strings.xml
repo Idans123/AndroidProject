@@ -38,4 +38,8 @@
     <string name="final_drill">ולתרגיל האחרון</string>
     <string name="avoid">התמחק מהמכשול</string>
     <string name="congratulations_you_finished_the_turtorial">כל הכבוד! סיימת את המדריך</string>
+    <string name="score">ניקוד:</string>
+    <string name="your_score_is">הניקוד שלך הוא:</string>
+    <string name="new_high_score">שיא חדש!</string>
+    <string name="entered_to_leadboard">"נכנסת אל טבלת השיאים במקום ה- "</string>
 </resources>

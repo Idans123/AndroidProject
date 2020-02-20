@@ -25,6 +25,7 @@ import com.example.balloonsworld.gameobjects.LevelManager;
 import com.example.balloonsworld.gameobjects.ObstaclesFactory;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 public class GameView extends View implements SensorEventListener {
@@ -124,7 +125,7 @@ public class GameView extends View implements SensorEventListener {
     private void initPaints()
     {
         scorePaint.setColor(Color.YELLOW);
-        scorePaint.setTextSize(70);
+        scorePaint.setTextSize(25*getResources().getDisplayMetrics().scaledDensity);
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
         scorePaint.setAntiAlias(true);
         shieldPaint.setColor(Color.BLUE);
@@ -137,15 +138,13 @@ public class GameView extends View implements SensorEventListener {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-
         //drawing our static objects: PAUSE, LIFES and SCORE
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
         canvas.drawBitmap(background,null,rect,null);
         drawLifes(canvas);
         canvas.drawBitmap(this.pause,20,20,null);
-        canvas.drawText("score: "+score,150,60,scorePaint); //TO DO - Localize "Score" to hebrew
-
+        canvas.drawText(getResources().getString(R.string.score)+score,180,80,scorePaint);
         if(lifes==0){
             listener.endGame(this.score,this.level);
         }

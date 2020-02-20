@@ -254,14 +254,11 @@ public class GameActivity extends AppCompatActivity {
                 final TextView userScoreTV=endGameDialog.findViewById(R.id.userScoreTV);
                 final Button tryAgainBtn=endGameDialog.findViewById(R.id.tryAgainBtn);
                 final Button returnToMenuBtn=endGameDialog.findViewById(R.id.returnToMenuBtn);
-
                 int newHighScore=isInTop10(score);
                 if(newHighScore!=0){
-                    endGameHighScoreTv.setText("New High Score!!!\nYou entered the leadboard at position "+newHighScore);
+                    endGameHighScoreTv.setText(getResources().getString(R.string.new_high_score)+"\n"+getResources().getString(R.string.entered_to_leadboard) +" "+newHighScore);
                 }
-
-                userScoreTV.setText("Your score is: "+score);
-
+                userScoreTV.setText(getResources().getString(R.string.your_score_is)+" "+score);
                 tryAgainBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

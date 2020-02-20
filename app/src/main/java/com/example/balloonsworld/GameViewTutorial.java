@@ -109,8 +109,8 @@ public class GameViewTutorial extends View implements SensorEventListener {
         canvas.drawBitmap(background,null,rect,null);
         drawLifes(canvas);
         canvas.drawBitmap(this.pause,20,20,null);
-        canvas.drawText("score: "+score,150,60,scorePaint); //TO DO - Localize "Score" to hebrew
-
+        canvas.drawText(getResources().getString(R.string.score)+score,180,80,scorePaint);
+        
         //update ballon position
         int minBallonX=0;
         int maxBallonX = (int)(canvasWidth - (ballon.getWidth()));
@@ -206,7 +206,7 @@ public class GameViewTutorial extends View implements SensorEventListener {
     private void initPaints()
     {
         scorePaint.setColor(Color.YELLOW);
-        scorePaint.setTextSize(70);
+        scorePaint.setTextSize(25*getResources().getDisplayMetrics().scaledDensity);
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
         scorePaint.setAntiAlias(true);
         shieldPaint.setColor(Color.BLUE);

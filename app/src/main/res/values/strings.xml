@@ -37,4 +37,8 @@
     <string name="final_drill">And for the final drill</string>
     <string name="avoid">Avoid the following obstacle</string>
     <string name="congratulations_you_finished_the_turtorial">Congratulations! You finished the turtorial</string>
+    <string name="score">Score:</string>
+    <string name="your_score_is">Your score is:</string>
+    <string name="new_high_score">New High Score!</string>
+    <string name="entered_to_leadboard">You entered the leadboard at position</string>
 </resources>
