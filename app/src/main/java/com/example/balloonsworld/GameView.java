@@ -31,35 +31,28 @@ import java.util.Random;
 public class GameView extends View implements SensorEventListener {
     private GameEventListener listener;
 
-
-
     interface GameEventListener{
         void pauseGame();
         void resumeGame();
         void endGame(int score,int level);
     }
+
     public void setListner(GameEventListener listener){
         this.listener=listener;
     }
-
     SensorManager manager;
     Sensor sensor;
-
     private int level;
     private LevelManager levelObj;
     private boolean showingLevel=true;
-    Random rand = new Random();
-
     private Bitmap ballon;
     private float speed=0;
     private float acc=0;
-
     //Background-params
     private Bitmap background;
     private Rect rect;
     int dWidth, dHeight;
     //Background-params
-
     private int canvasHeight;
     private int canvasWidth;
     private int balloonX;
@@ -67,24 +60,15 @@ public class GameView extends View implements SensorEventListener {
     private boolean timeToDropAnother=true;
     private ArrayList<GameConsumable> currentConsumeableArr = new ArrayList<>();
     private ArrayList<GameConsumable> consumablesToRemove = new ArrayList<>();
-
-
-    private  ArrayList<GameObstacle> obstaclesArr=new ArrayList<GameObstacle>();
-    private  ArrayList<GameObstacle> obstaclesToRemove=new ArrayList<GameObstacle>();
-
+    private ArrayList<GameObstacle> obstaclesArr=new ArrayList<GameObstacle>();
+    private ArrayList<GameObstacle> obstaclesToRemove=new ArrayList<GameObstacle>();
     private Bitmap[] ballonLife=new Bitmap[3];
     int lifes=3;
-
     private int score=0;
     private Paint scorePaint=new Paint();
-
-    private boolean touch = false;
     private boolean shield=false;
-
     private Paint shieldPaint=new Paint();
-
     private Bitmap pause;
-
     private ConsumablesFactory consumablesFactory;
     private ObstaclesFactory obstaclesFactory;
 
@@ -162,9 +146,7 @@ public class GameView extends View implements SensorEventListener {
                 else{
                     this.levelObj.drawNow(canvas);
                 }
-
             }
-
         }
         else{
             if(!dropItemType&&timeToDropAnother){
@@ -174,9 +156,7 @@ public class GameView extends View implements SensorEventListener {
                 genarateObstacle(minBallonX,maxBallonX+ballon.getWidth());
             }
         }
-
         balloonX+=(int)speed;
-
         if(balloonX<minBallonX){
             balloonX=minBallonX;
             speed=0;
@@ -187,32 +167,32 @@ public class GameView extends View implements SensorEventListener {
             speed=0;
             acc=0;
         }
+
         if(shield){
             drawShield(canvas);
         }
+
         canvas.drawBitmap(ballon,balloonX,canvasHeight - ballon.getHeight()*2,null);
 
-//        coinY+=coinSpeed;
         //update all coins position
-        for (GameConsumable coin : currentConsumeableArr){
-            coin.update();
-            if(coin.hitCheker(canvasHeight,ballon,balloonX))
+        for (GameConsumable consumable : currentConsumeableArr){
+            consumable.update();
+            if(consumable.hitCheker(canvasHeight,ballon,balloonX))
             {
-                int objectValue=coin.getValue();
+                int objectValue=consumable.getValue();
                 if(objectValue>=0){
-                    score+=coin.getValue();
+                    score+=consumable.getValue();
                 }
                 else{
                     activateShield();
                 }
-                consumablesToRemove.add(coin);
-                System.out.println("Score: "+score);
+                consumablesToRemove.add(consumable);
             }
-            else if(coin.getObjectY()>canvasHeight){
-                consumablesToRemove.add(coin);
+            else if(consumable.getObjectY()>canvasHeight){
+                consumablesToRemove.add(consumable);
             }
             else{
-                coin.drawNow(canvas);
+                consumable.drawNow(canvas);
             }
         }
         currentConsumeableArr.removeAll(consumablesToRemove);
@@ -222,7 +202,6 @@ public class GameView extends View implements SensorEventListener {
             if(obstacle.hitCheker(canvasHeight,ballon,balloonX)&&!shield)
             {
                 lifes--;
-
                 obstaclesToRemove.add(obstacle);
                 //end game, player hit obstacle
             }
@@ -251,13 +230,11 @@ public class GameView extends View implements SensorEventListener {
         canvas.drawCircle((int)(balloonX+ballon.getWidth()/2),(int)(canvasHeight - ballon.getHeight()*2 + ballon.getHeight()/2),ballon.getHeight()/2+10,shieldPaint);
     }
 
-
     @Override
     public void onSensorChanged(SensorEvent event) {
         acc=event.values[0];
         System.out.println(acc);
         speed-=acc/6;
-
         if(speed>20) speed=20;
         if(speed<-20) speed=-20;
     }
@@ -266,7 +243,6 @@ public class GameView extends View implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -293,7 +269,6 @@ public class GameView extends View implements SensorEventListener {
                 },
                 2000-(level*100)
         );
-
     }
 
     //will genarate an obstacle
@@ -310,9 +285,8 @@ public class GameView extends View implements SensorEventListener {
                 },
                 2000-(level*100)
         );
-
-
     }
+
     public void activateShield(){
         shield=true;
         new java.util.Timer().schedule(
@@ -325,5 +299,4 @@ public class GameView extends View implements SensorEventListener {
                 5000
         );
     }
-
 }
