@@ -11,17 +11,16 @@ public class WallLeft extends  GameObstacle {
     public WallLeft(int minBallonX, int maxBallonX, int speed,int ballonWidth) {
         super(minBallonX, maxBallonX, speed);
         if(this.getObjectX()>maxBallonX-(ballonWidth*1.5)){
-            this.fixPosition((int)(maxBallonX-(ballonWidth)));
+            this.fixPosition((int)(maxBallonX-(ballonWidth*2)));
         }
         else if(this.getObjectX()<minBallonX+(maxBallonX-minBallonX)/2){
-            this.fixPosition((int)(maxBallonX-(ballonWidth)));
+            this.fixPosition((int)(maxBallonX-(ballonWidth*2)));
         }
-        Paint.setColor(Color.BLACK);
+        Paint.setColor(Color.YELLOW);
         Paint.setAntiAlias(false);
     }
 
     public  void drawNow(Canvas canvas){
-
         canvas.drawRect(0,this.getObjectY(),this.getObjectX(),this.getObjectY()+50,Paint);
     }
     public  boolean hitCheker(int canvasHeight, Bitmap ballon, int balloonX){

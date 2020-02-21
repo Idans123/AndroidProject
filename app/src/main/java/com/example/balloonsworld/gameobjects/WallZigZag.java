@@ -11,23 +11,19 @@ public class WallZigZag extends GameObstacle {
     private int xSpeed=10;
     private boolean goingRight=true;
 
-
     public WallZigZag(int minBallonX, int maxBallonX, int speed) {
         super(minBallonX, maxBallonX, speed);
-        Paint.setColor(Color.BLACK);
+        Paint.setColor(Color.RED);
         Paint.setAntiAlias(false);
     }
     public  void drawNow(Canvas canvas){
-//        canvas.drawRect(this.getObjectX(),this.getObjectY(),canvasWidth,this.getObjectY()+obstacle.getRadius(),obstacle.getPaint());
         canvas.drawRect(this.getObjectX(),this.getObjectY(),this.getObjectX()+300,this.getObjectY()+50,Paint);
     }
     public  boolean hitCheker(int canvasHeight, Bitmap ballon, int balloonX){
         return(canvasHeight - ballon.getHeight()*2<this.getObjectY() &&
                 (canvasHeight - ballon.getHeight()*2+ballon.getHeight())>this.getObjectY() &&
                 this.getObjectX()<balloonX && this.getObjectX()+300>ballon.getWidth()+balloonX);
-
     }
-
     @Override
     public void update() {
         super.update();
@@ -40,7 +36,5 @@ public class WallZigZag extends GameObstacle {
             goingRight=!goingRight;
         }
         this.setObstacleX(xSpeed);
-
-
     }
 }

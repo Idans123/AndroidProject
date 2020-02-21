@@ -12,7 +12,7 @@ public class WallWithGap extends GameObstacle {
 
     public WallWithGap(int minBallonX, int maxBallonX, int speed,int ballonWidth) {
         super(minBallonX, maxBallonX, speed);
-        this.gapLeft=(int)(ballonWidth*1.5);
+        this.gapLeft=(int)(ballonWidth*3);
         this.gapRight=ballonWidth;
         if(this.getObjectX()<minBallonX+this.gapLeft){
             this.fixPosition(minBallonX+this.gapLeft);

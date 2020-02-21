@@ -23,16 +23,14 @@ public class ObstaclesFactory {
             randRes= rand.nextInt(20);
         }
 
-
-
         if(randRes<=5){
             return new WallWithGap(minBallonX,maxBallonX,level,ballonWidth);
         }
         else if(randRes<=10){
-            return new WallLeft(minBallonX,maxBallonX,level,ballonWidth);
+            return new WallRight(minBallonX,maxBallonX,level,ballonWidth);
         }
         else if(randRes<=15){
-            return new WallRight(minBallonX,maxBallonX,level,ballonWidth);
+            return new WallLeft(minBallonX,maxBallonX,level,ballonWidth);
         }
         else{
             return new WallZigZag(minBallonX,maxBallonX,level);
@@ -41,5 +39,4 @@ public class ObstaclesFactory {
     public GameObstacle generateObstacleForTutorial(int minBallonX, int maxBallonX,int ballonWidth){
         return new WallWithGap(minBallonX,maxBallonX,5,ballonWidth);
     }
-
 }
