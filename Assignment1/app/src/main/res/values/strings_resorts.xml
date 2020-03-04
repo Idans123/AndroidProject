@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="resorts_array">
+    <item>Val thorens</item>
+    <item>Courchevel</item>
+    <item>Méribel</item>
+    <item>Les menuires</item>
+    <item>Las arcs 1800</item>
+    <item>Tignes</item>
+</string-array>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="title" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/emerald</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="dark_red_and_bold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/dark_red</item>
+    </style>
+    <style name="sub_title" parent="dark_red_and_bold">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+    <style name="radiobtns" parent="dark_red_and_bold">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="resorts_tv" parent="dark_red_and_bold">
+        <item name="android:textSize">17sp</item>
+    </style>
+    <style name="spinner_colors">
+        <item name="android:dropDownSelector">@color/colorPrimaryDark</item>
+        <item name="android:popupBackground">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+    <style name="first_day_btn">
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/lightblue_btn</item>
+    </style>
+    <style name="number_of_days_et" parent="dark_red_and_bold">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="need_helmet" parent="dark_red_and_bold">
+        <item name="android:textSize">17sp</item>
+    </style>
+    <style name="go_to_payment_btn">
+        <item name="android:background">@drawable/lightblue_btn</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

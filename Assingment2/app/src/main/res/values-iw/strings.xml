@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">מעצב שיער</string>
+    <string name="welcome">ברוכים הבאים למספרה של איציק!</string>
+    <string name="enter_your_name">הכנס את שמך:</string>
+    <string name="full_name">שם מלא</string>
+    <string name="haircut_man_spinner">תספורת לגבר - 50 ש\"ח</string>
+    <string name="haircut_woman_spinner">תספורת לאישה - 100 ש\"ח</string>
+    <string name="take_picture">צלם תמונה מהמצלמה</string>
+    <string name="upload_gallery">העלה תמונה מהגלריה</string>
+    <string name="next">הבא</string>
+    <string name="finish_fill_all_details">אנא מלא את כל השדות הנדרשים</string>
+    <string name="hello">שלום</string>
+    <string name="price">"המחיר עבור התספורת: "</string>
+    <string name="coin_type">ש\"ח</string>
+    <string name="upload_selfie">בבקשה העלה סלפי עם התספורת הנוכחית שלך</string>
+    <string name="thank_you_choose">ותודה שבחרת בנו</string>
+    <string name="please_pick_a_time">"אנא בחר שעה: "</string>
+    <string name="please_pick_a_date">"אנא בחר תאריך: "</string>
+    <string name="time_not_chosen">שעה טרם נבחרה</string>
+    <string name="date_not_chosen">תאריך טרם נבחר</string>
+    <string name="schedule_this_appointment_to_your_calendar">אנו מציעים לך להוסיף תור זה ליומן שלך</string>
+    <string name="appointment_at_saloon">תור אצל איציק הספר</string>
+    <string name="man_haircut_event">תספורת לגבר</string>
+    <string name="woman_haircut_event">תספורת לאישה</string>
+    <string name="we_will_see_you_on">"נראה אותך בתאריך "</string>
+    <string name="at">"בשעה "</string>
+    <string name="don_t_hesitate_to_call_us">אל תהססו לחייג אלינו</string>
+    <string name="add_us_to_your_contact_list">הוסף אותנו לאנשי הקשר שלך</string>
+    <string name="see_our_location">ראה את המיקום שלנו</string>
+    <string name="accept_permission">עליך לאשר את ההרשאות על מנת לבצע פעולה זו</string>
+    <string name="alarm_message">תור אצל איציק הספר עוד 30 דק</string>
+    <string name="web_search">חפש אותנו באינטרנט</string>
+    <string name="search_query">איציק הספר</string>
+    <string name="haircut_japanese_blowout">החלקה יפנית - 1000 ש\"ח</string>
+    <string name="haircut_hair_coloring">צביעת שיער - 150 ש\"ח</string>
+    <string name="japanese_blowout_event">החלקה יפנית</string>
+    <string name="hair_coloring_event">צביעת שיער</string>
+</resources>

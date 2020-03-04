@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="haircuts_array">
+        <item>@string/haircut_man_spinner</item>
+        <item>@string/haircut_woman_spinner</item>
+        <item>@string/haircut_japanese_blowout</item>
+        <item>@string/haircut_hair_coloring</item>
+    </string-array>
+</resources>

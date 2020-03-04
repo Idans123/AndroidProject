@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">פאודר שופ</string>
+    <string name="title_tv">ברוכים הבאים לחנות השלג</string>
+    <string name="fullname_ed">הכנס את שמך המלא</string>
+    <string name="email_ed">הכנס כתובת דואר אלקטרוני</string>
+    <string name="ski_rb">סקי</string>
+    <string name="snowboard_rb">סנובורד</string>
+    <string name="pick_resort_TV">בחר את אתר הגלישה:</string>
+    <string name="startDate_btn">יום הגלישה הראשון</string>
+    <string name="totalDaysStr">"סה\"כ ימי גלישה: "</string>
+    <string name="need_helmet_checkbox">זקוק לקסדה?</string>
+    <string name="hire_now_tv">שכור את הציוד שלך עכשיו</string>
+    <string name="least_char_toast">חייב להכיל לפחות 4 אותיות</string>
+    <string name="start_day_first">מלא קודם את יום הגלישה הראשון</string>
+    <string name="go_to_paymentBtn">עבור לתשלום</string>
+    <string name="error_number_of_days">השכרה נעה בין יום אחד לעשרים ימים</string>
+    <string name="fill_all_details">בבקשה סיים למלא את כל השדות הנדרשים</string>
+    <string name="price_for_ski">המחיר הוא 15 אירו ליום גלישה</string>
+    <string name="price_for_snowboard">המחיר הוא 20 אירו ליום גלישה</string>
+    <string name="price_tv">מחיר:</string>
+    <string name="price">מחיר:</string>
+    <string name="enter_number_of_days">מספר ימי הגלישה</string>
+    <string name="stars_error">אנא הכנס מספר בין 1 ל5</string>
+    <string name="feedback">נשמח לקבל דעתך אודות השירות</string>
+    <string name="hint_feedback_et">1-5 כוכבים</string>
+    <string name="submit_btn">שלח</string>
+    <string name="thank_you_toast">תודה!</string>
+    <string name="see_forecast">ראה תחזית מזג אוויר לריזורט הטוב בעולם- ואל טורנס</string>
+    <string name="enjoy">"תהנה ב "</string>
+</resources>

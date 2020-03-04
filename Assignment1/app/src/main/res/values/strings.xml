@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Powder shop</string>
+    <string name="title_tv">Welcome to Powder shop</string>
+    <string name="fullname_ed">Enter your full name</string>
+    <string name="email_ed">Enter you e-mail</string>
+    <string name="ski_rb">Ski</string>
+    <string name="snowboard_rb">Snowboard</string>
+    <string name="pick_resort_TV">Pick your resort:</string>
+    <string name="startDate_btn">First day skiing</string>
+    <string name="totalDaysStr">Total days of skiing:</string>
+    <string name="need_helmet_checkbox">Need a helmet?</string>
+    <string name="hire_now_tv">Hire your ski now!</string>
+    <string name="least_char_toast">Must contain at least 4 characters</string>
+    <string name="start_day_first">Fill start day first</string>
+    <string name="go_to_paymentBtn">Go to payment</string>
+    <string name="error_number_of_days">You can hire from 1 to 20 days</string>
+    <string name="fill_all_details">Please finish fill all details</string>
+    <string name="price_for_snowboard">The price is: 20 EUR per day</string>
+    <string name="price_for_ski">The price is: 15 EUR per day</string>
+    <string name="price">Price:</string>
+    <string name="price_tv">Price:</string>
+    <string name="enter_number_of_days">Number of skiing days</string>
+    <string name="stars_error">Please enter a number from 1-5</string>
+    <string name="feedback">Please leave us a feedback</string>
+    <string name="hint_feedback_et">1-5 stars</string>
+    <string name="submit_btn">Submit</string>
+    <string name="thank_you_toast">Thank you!</string>
+    <string name="see_forecast">See the forecast at the best resort ever-VAL THORENS</string>
+    <string name="enjoy">Enjoy at</string>
+</resources>
